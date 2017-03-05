@@ -1,0 +1,53 @@
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\csc.exe
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\System.Collections.Immutable.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\vbc.exe
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\VBCSCompiler.exe
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\roslyn\VBCSCompiler.exe.config
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\ICT-LAB WEB API.dll.config
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\ICT-LAB WEB API.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\ICT-LAB WEB API.pdb
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Antlr3.Runtime.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Microsoft.Web.Infrastructure.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Newtonsoft.Json.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Net.Http.Formatting.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Helpers.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Http.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Http.WebHost.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Mvc.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Optimization.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Razor.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.WebPages.Deployment.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.WebPages.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.WebPages.Razor.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\WebGrease.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Newtonsoft.Json.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Net.Http.Formatting.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Helpers.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Http.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Http.WebHost.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Mvc.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Optimization.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.Razor.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.WebPages.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.WebPages.Deployment.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Web.WebPages.Razor.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\Antlr3.Runtime.pdb
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\obj\Debug\ICT-LAB WEB API.csprojResolveAssemblyReference.cache
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\obj\Debug\ICT-LAB WEB API.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\obj\Debug\ICT-LAB WEB API.pdb
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\MongoDB.Bson.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\MongoDB.Driver.Core.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\MongoDB.Driver.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\MongoDB.Bson.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\MongoDB.Driver.xml
+c:\users\gertj\OneDrive\Documenten\Visual Studio 2015\Projects\ICT-LAB WEB API\ICT-LAB WEB API\bin\MongoDB.Driver.Core.xml
