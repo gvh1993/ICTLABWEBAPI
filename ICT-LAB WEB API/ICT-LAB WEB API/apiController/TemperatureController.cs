@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Diagnostics;
 using System.Web.Http;
 using ICT_LAB_WEB_API.MongoDB;
 using MongoDB.Bson;
-using MongoDB;
 using MongoDB.Driver;
-using WebGrease.Css.Extensions;
 
 namespace ICT_LAB_WEB_API.Controllers
 {

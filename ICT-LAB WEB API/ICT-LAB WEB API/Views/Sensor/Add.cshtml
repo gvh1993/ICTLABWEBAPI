@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+<div ng-app="app" ng-controller="sensorController">
+    <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Name Sensor" ng-bind="newSensorName" />
+        <button ng-click="addSensor">Add Sensor</button>
+    </div>
+</div>

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace ICT_LAB_WEB_API.Areas.HelpPage.ModelDescriptions

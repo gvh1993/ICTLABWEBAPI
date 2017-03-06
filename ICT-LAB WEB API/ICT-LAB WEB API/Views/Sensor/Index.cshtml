@@ -1,19 +1,28 @@
 ﻿@{
     ViewBag.Title = "Sensors";
-    @Scripts.Render("~/bundles/angular");
+
 }
 
+@Scripts.Render("~/bundles/angularJS", "~/bundles/scripts")
+
 <script>
-    var Model = JSON.serialize(@Model);
+    var mySensors = @Html.Raw(Json.Encode(Model))
 </script>
 
 <h2>Sensors</h2>
-@*<div ng-app="app" ng-controller="sensorController">
-    <table>
-        <tr ng-repeat="sensor in sensors">
-            <td ng-bind="sensor.Id"></td>
-            <td ng-bind="sensor.Name"></td>
-        </tr>
-    </table>
-</div>*@
+
+<div ng-app="app" ng-controller="sensorController">
+    <div class="col-md-10" ng-cloak>
+
+        <table class="table up">
+            <tr ng-repeat="sensor in sensors.Sensors">
+                <td ng-bind="sensor.Name"></td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Add Sensor", "Add")
+    </div>
+</div>
 
