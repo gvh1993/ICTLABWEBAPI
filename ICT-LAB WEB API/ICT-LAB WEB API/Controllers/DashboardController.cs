@@ -1,11 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Http;
+using System.Web.Mvc;
 using ICT_LAB_WEB_API.Models;
 using ICT_LAB_WEB_API.MongoDB;
 using MongoDB.Driver;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
-    public class SensorController : Controller
+    public class DashboardController : Controller
     {
         // GET: Sensor
         public ActionResult Index()
@@ -29,9 +31,9 @@ namespace ICT_LAB_WEB_API.Controllers
             return View(sensors);
         }
 
-        public ActionResult Add()
+        //sensor
+        public ActionResult Add(string name)
         {
-
             return View();
         }
     }

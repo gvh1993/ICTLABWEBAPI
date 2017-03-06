@@ -13,6 +13,7 @@ namespace ICT_LAB_WEB_API
             bundles.Add(new ScriptBundle("~/bundles/angularJS")
                 .Include("~/Scripts/angular.js")
                 .Include("~/app/app.js")
+                .Include("~/app/services/apiService.js")
                 .IncludeDirectory("~/app/controllers", "*.js"));
             
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

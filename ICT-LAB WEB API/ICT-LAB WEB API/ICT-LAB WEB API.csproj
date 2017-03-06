@@ -178,11 +178,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="apiController\TemperatureController.cs" />
     <Compile Include="apiController\ValuesController.cs" />
-    <Compile Include="Controllers\SensorController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Sensor.cs" />
+    <Compile Include="Models\SensorType.cs" />
     <Compile Include="Models\SensorViewModel.cs" />
     <Compile Include="MongoDB\MongoDBConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,6 +191,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\sensorController.js" />
+    <Content Include="app\services\apiService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -239,8 +241,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Sensor\Index.cshtml" />
-    <Content Include="Views\Sensor\Add.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\Add.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

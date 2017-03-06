@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+@Scripts.Render("~/bundles/angularJS", "~/bundles/scripts")
+
+<h2>Add</h2>
+<div ng-app="app" ng-controller="sensorController">
+    <div class="col-md-12">
+        <select class="form-control" ng-model="selectedSensor" ng-options="item for item in sensorTypes"></select><br/>
+        <br/>
+        <button class="btn btn-default" ng-click="addSensor()">Add Sensor</button>
+    </div>
+</div>
