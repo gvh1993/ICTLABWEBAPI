@@ -26,11 +26,10 @@ namespace ICT_LAB_WEB_API.Controllers
                 Sensor sensor = new Sensor();
                 sensor.Name = collection["name"].AsString;
                 sensor.Id = collection["idIndex"]["key"]["_id"].AsInt32;
+
+                sensors.Sensors.Add(sensor);
             }
-            foreach (var collection in collections)
-            {
-                
-            }
+
             return View(sensors);
         }
     }

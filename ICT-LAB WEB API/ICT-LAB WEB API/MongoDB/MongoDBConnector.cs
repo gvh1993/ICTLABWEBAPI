@@ -12,7 +12,12 @@ namespace ICT_LAB_WEB_API.MongoDB
         public IMongoDatabase database { get; set; }
         public IMongoClient client { get; set; }
 
-        public void Connect()
+        public MongoDBConnector()
+        {
+            Connect();
+        }
+
+        private void Connect()
         {
             string url = ConfigurationSettings.AppSettings["MongoDBURL"];
 

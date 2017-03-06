@@ -20,7 +20,6 @@ namespace ICT_LAB_WEB_API.Controllers
         {
             //get all form database
             MongoDBConnector connector = new MongoDBConnector();
-            connector.Connect();
 
             var collection = connector.database.GetCollection<BsonDocument>("Temperature");
 

@@ -1,11 +1,19 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-    @Scripts.Render("~/bundles/AngularJS");
+﻿@{
+    ViewBag.Title = "Sensors";
+    @Scripts.Render("~/bundles/angular");
 }
+
 <script>
-    var model = JSON.
+    var Model = JSON.serialize(@Model);
 </script>
 
-<h2>Index</h2>
+<h2>Sensors</h2>
+@*<div ng-app="app" ng-controller="sensorController">
+    <table>
+        <tr ng-repeat="sensor in sensors">
+            <td ng-bind="sensor.Id"></td>
+            <td ng-bind="sensor.Name"></td>
+        </tr>
+    </table>
+</div>*@
 
