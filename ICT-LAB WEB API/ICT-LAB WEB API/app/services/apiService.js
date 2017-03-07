@@ -6,7 +6,7 @@
             return $http.post("/api/Sensor/Add", '"' + sensorName + '"');
         },
         deleteSensor: function(sensorName) {
-            return $http.post("/api/Sensor/Delete", '"' + sensorName + '"');
+            return $http.post("/api/Sensor/Delete?sensorName="+sensorName);
         }
     };
 }])
