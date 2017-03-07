@@ -21,6 +21,7 @@
             apiService.deleteSensor(sensor.Name).then(
                 function successCallback(result) {
                     var x = result;
+                    alert("deleted " + sensor.Name);
                 },
                 function errorCallback(result) {
                     var x = result;
