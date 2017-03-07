@@ -14,7 +14,27 @@ namespace ICT_LAB_WEB_API.apiController
 {
     public class SensorController : ApiController
     {
-        
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            MongoDBConnector con = new MongoDBConnector();
+
+            var result = con.database.ListCollections();
+
+            SensorViewModel sensors = new SensorViewModel();
+
+            var collections = result.ToList();
+            foreach (var collection in collections)
+            {
+                Sensor sensor = new Sensor();
+                sensor.Name = collection["name"].AsString;
+
+                sensors.Sensors.Add(sensor);
+            }
+
+            return Ok(sensors);
+        }
+
         [HttpPost]
         public IHttpActionResult Add([FromBody]string sensorName)
         {
@@ -44,8 +64,6 @@ namespace ICT_LAB_WEB_API.apiController
         {
             MongoDBConnector con = new MongoDBConnector();
             con.database.DropCollection(sensorName);
-
-            
         }
     }
 }

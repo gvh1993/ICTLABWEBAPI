@@ -14,23 +14,31 @@
                 function errorCallback(result) {
                     alert("failed to add new sensor");
                 });
-
         }
 
         $scope.removeSensor = function(sensor) {
             apiService.deleteSensor(sensor.Name).then(
                 function successCallback(result) {
                     var x = result;
-                    alert("deleted " + sensor.Name);
+                    //alert("deleted " + sensor.Name);
                 },
                 function errorCallback(result) {
                     var x = result;
+                    alert("unable to delete: " + sensor.Name);
                 }
             );
 
-            //TODO reload the table
-
+            $scope.$apply($scope.refreshSensors());
         }
 
-        $scope.test = "test";
+        $scope.refreshSensors = function(){
+            apiService.getSensors()
+                .then(
+                    function successCallback(result) {
+                        $scope.sensors = result.data;
+                    },
+                    function errorCallback(result) {
+                        var x = result;
+                    });
+        };
     }]);

@@ -7,6 +7,9 @@
         },
         deleteSensor: function(sensorName) {
             return $http.post("/api/Sensor/Delete?sensorName="+sensorName);
+        },
+        getSensors: function() {
+            return $http.get("/api/Sensor");
         }
     };
 }])
