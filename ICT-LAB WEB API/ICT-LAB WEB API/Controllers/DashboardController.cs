@@ -24,9 +24,11 @@ namespace ICT_LAB_WEB_API.Controllers
                 Sensor sensor = new Sensor();
                 sensor.Name = collection["name"].AsString;
 
-                sensors.Sensors.Add(sensor);
+                if (sensor.Name != "system.version" && sensor.Name != "startup_log")
+                {
+                    sensors.Sensors.Add(sensor);
+                }
             }
-
 
             return View(sensors);
         }

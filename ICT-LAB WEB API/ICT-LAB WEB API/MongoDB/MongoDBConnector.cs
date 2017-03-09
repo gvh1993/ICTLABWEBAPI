@@ -1,5 +1,7 @@
 ﻿using System.Configuration;
 using MongoDB.Driver;
+using ICT_LAB_WEB_API.Models;
+using System.Collections.Generic;
 
 namespace ICT_LAB_WEB_API.MongoDB
 {
@@ -10,15 +12,18 @@ namespace ICT_LAB_WEB_API.MongoDB
 
         public MongoDBConnector()
         {
-            Connect();
-        }
-
-        private void Connect()
-        {
             string url = ConfigurationSettings.AppSettings["MongoDBURL"];
-
-            client = new MongoClient(url);
-            database = client.GetDatabase("admin");
+            try
+            {
+                client = new MongoClient(url);
+                database = client.GetDatabase("local");
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine("Could not connect to Database. " + ex);
+                //TODO log
+            }
+            
         }
 
 
