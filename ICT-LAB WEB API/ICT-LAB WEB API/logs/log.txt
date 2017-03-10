@@ -1,0 +1,96 @@
+ERROR 2017-03-10 19:44:43,034 35310ms DashboardController    Index              - Could not retrieve list collections from database. System.TimeoutException: A timeout occured after 30000ms selecting a server using CompositeServerSelector{ Selectors = ReadPreferenceServerSelector{ ReadPreference = { Mode : Primary } }, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 } }. Client view of cluster state is { ClusterId : "1", ConnectionMode : "Automatic", Type : "Unknown", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/localhost:27017" }", EndPoint: "Unspecified/localhost:27017", State: "Disconnected", Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server. ---> System.Net.Sockets.SocketException: Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd 127.0.0.1:27017
+   bij System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   bij System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.TcpStreamFactory.<ConnectAsync>d__7.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.TcpStreamFactory.<CreateStreamAsync>d__4.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+   --- Einde van intern uitzonderingsstackpad ---
+   bij MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   bij MongoDB.Driver.Core.Servers.ServerMonitor.<HeartbeatAsync>d__27.MoveNext()" }] }.
+   bij MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)
+   bij MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedHelper.HandleCompletedTask(Task completedTask)
+   bij MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChanged(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Clusters.Cluster.SelectServer(IServerSelector selector, CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Bindings.ReadPreferenceBinding.GetReadChannelSource(CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Operations.ListCollectionsOperation.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   bij MongoDB.Driver.OperationExecutor.ExecuteReadOperation[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   bij MongoDB.Driver.MongoDatabaseImpl.ExecuteReadOperation[T](IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   bij MongoDB.Driver.MongoDatabaseImpl.ListCollections(ListCollectionsOptions options, CancellationToken cancellationToken)
+   bij ICT_LAB_WEB_API.Controllers.DashboardController.Index() in D:\Github\ICTLABWEBAPI\ICT-LAB WEB API\ICT-LAB WEB API\Controllers\DashboardController.cs:regel 25
+ERROR 2017-03-10 19:46:42,267 154543ms DashboardController    Index              - Could not retrieve list collections from database. System.TimeoutException: A timeout occured after 30000ms selecting a server using CompositeServerSelector{ Selectors = ReadPreferenceServerSelector{ ReadPreference = { Mode : Primary } }, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 } }. Client view of cluster state is { ClusterId : "1", ConnectionMode : "Automatic", Type : "Unknown", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/localhost:27017" }", EndPoint: "Unspecified/localhost:27017", State: "Disconnected", Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server. ---> System.Net.Sockets.SocketException: Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd 127.0.0.1:27017
+   bij System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   bij System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.TcpStreamFactory.<ConnectAsync>d__7.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.TcpStreamFactory.<CreateStreamAsync>d__4.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+   --- Einde van intern uitzonderingsstackpad ---
+   bij MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   bij MongoDB.Driver.Core.Servers.ServerMonitor.<HeartbeatAsync>d__27.MoveNext()" }] }.
+   bij MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)
+   bij MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedHelper.HandleCompletedTask(Task completedTask)
+   bij MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChanged(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Clusters.Cluster.SelectServer(IServerSelector selector, CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Bindings.ReadPreferenceBinding.GetReadChannelSource(CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Operations.ListCollectionsOperation.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   bij MongoDB.Driver.OperationExecutor.ExecuteReadOperation[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   bij MongoDB.Driver.MongoDatabaseImpl.ExecuteReadOperation[T](IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   bij MongoDB.Driver.MongoDatabaseImpl.ListCollections(ListCollectionsOptions options, CancellationToken cancellationToken)
+   bij ICT_LAB_WEB_API.Controllers.DashboardController.Index() in D:\Github\ICTLABWEBAPI\ICT-LAB WEB API\ICT-LAB WEB API\Controllers\DashboardController.cs:regel 25
+ERROR 2017-03-10 19:50:29,869 49723ms DashboardController    Index              - Could not retrieve list collections from database. System.TimeoutException: A timeout occured after 30000ms selecting a server using CompositeServerSelector{ Selectors = ReadPreferenceServerSelector{ ReadPreference = { Mode : Primary } }, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 } }. Client view of cluster state is { ClusterId : "1", ConnectionMode : "Automatic", Type : "Unknown", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/localhost:27017" }", EndPoint: "Unspecified/localhost:27017", State: "Disconnected", Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server. ---> System.Net.Sockets.SocketException: Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd 127.0.0.1:27017
+   bij System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   bij System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.TcpStreamFactory.<ConnectAsync>d__7.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.TcpStreamFactory.<CreateStreamAsync>d__4.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+   --- Einde van intern uitzonderingsstackpad ---
+   bij MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+--- Einde van stacktracering vanaf vorige locatie waar uitzondering is opgetreden ---
+   bij System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   bij System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   bij MongoDB.Driver.Core.Servers.ServerMonitor.<HeartbeatAsync>d__27.MoveNext()" }] }.
+   bij MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)
+   bij MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedHelper.HandleCompletedTask(Task completedTask)
+   bij MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChanged(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Clusters.Cluster.SelectServer(IServerSelector selector, CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Bindings.ReadPreferenceBinding.GetReadChannelSource(CancellationToken cancellationToken)
+   bij MongoDB.Driver.Core.Operations.ListCollectionsOperation.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   bij MongoDB.Driver.OperationExecutor.ExecuteReadOperation[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   bij MongoDB.Driver.MongoDatabaseImpl.ExecuteReadOperation[T](IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   bij MongoDB.Driver.MongoDatabaseImpl.ListCollections(ListCollectionsOptions options, CancellationToken cancellationToken)
+   bij ICT_LAB_WEB_API.Controllers.DashboardController.Index() in D:\Github\ICTLABWEBAPI\ICT-LAB WEB API\ICT-LAB WEB API\Controllers\DashboardController.cs:regel 25

@@ -4,20 +4,26 @@ using System.Web.Mvc;
 using ICT_LAB_WEB_API.Models;
 using ICT_LAB_WEB_API.MongoDB;
 using MongoDB.Driver;
+using log4net;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
     public class DashboardController : Controller
     {
+        readonly ILog logger;
+        public DashboardController()
+        {
+            logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        }
         // GET: Sensor
         public ActionResult Index()
         {
-            MongoDBConnector con = new MongoDBConnector();
-
-            var result = con.database.ListCollections();
-
             SensorViewModel sensors = new SensorViewModel();
-
+            try
+            {
+                MongoDBConnector con = new MongoDBConnector();
+                var result = con.database.ListCollections();
+            
             var collections = result.ToList();
             foreach (var collection in collections)
             {
@@ -29,12 +35,16 @@ namespace ICT_LAB_WEB_API.Controllers
                     sensors.Sensors.Add(sensor);
                 }
             }
-
+        }
+            catch (Exception ex)
+            {
+                logger.Error("Could not retrieve list collections from database. " + ex);
+            }
             return View(sensors);
         }
 
         //sensor
-        public ActionResult Add(string name)
+        public ActionResult Add()
         {
             return View();
         }

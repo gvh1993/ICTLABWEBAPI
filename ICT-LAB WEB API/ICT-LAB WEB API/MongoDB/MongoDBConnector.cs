@@ -9,9 +9,11 @@ namespace ICT_LAB_WEB_API.MongoDB
     {
         public IMongoDatabase database { get; set; }
         public IMongoClient client { get; set; }
+        readonly log4net.ILog logger;
 
         public MongoDBConnector()
         {
+            logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             string url = ConfigurationSettings.AppSettings["MongoDBURL"];
             try
             {
@@ -20,8 +22,7 @@ namespace ICT_LAB_WEB_API.MongoDB
             }
             catch (System.Exception ex)
             {
-                System.Console.WriteLine("Could not connect to Database. " + ex);
-                //TODO log
+                logger.Error("Could not connect to database! " + ex);
             }
             
         }

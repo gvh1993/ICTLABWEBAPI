@@ -2,8 +2,8 @@
     var httpConfig = {
     };
     return {
-        addSensor: function(sensorName) {
-            return $http.post("/api/Sensor/Add", '"' + sensorName + '"');
+        addSensor: function(sensor) {
+            return $http.post("/api/Sensor/Add", sensor);
         },
         deleteSensor: function(sensorName) {
             return $http.post("/api/Sensor/Delete?sensorName="+sensorName);

@@ -6,8 +6,14 @@
 <h2>Add</h2>
 <div ng-app="app" ng-controller="sensorController">
     <div class="col-md-12">
-        <select class="form-control" ng-model="selectedSensor" ng-options="item for item in sensorTypes"></select><br/>
-        <br/>
-        <button class="btn btn-default" ng-click="addSensor()">Add Sensor</button>
+        <div class="form-group">
+            <label for="type">Sensor type:</label>
+            <select id="type"class="form-control" ng-model="sensor.type" ng-options="item for item in sensorTypes"></select><br />
+            <br />
+            <label for="link">target api link:</label>
+            <input id="link" class="form-control" type="text" ng-model="sensor.targetApiLink" /><br />
+            <br />
+            <button class="btn btn-default" ng-click="addSensor()">Add Sensor</button>
+        </div>
     </div>
 </div>

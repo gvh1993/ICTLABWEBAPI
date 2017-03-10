@@ -9,6 +9,8 @@ using ICT_LAB_WEB_API.Models;
 using ICT_LAB_WEB_API.MongoDB;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json;
+
 
 namespace ICT_LAB_WEB_API.apiController
 {
@@ -29,14 +31,17 @@ namespace ICT_LAB_WEB_API.apiController
                 Sensor sensor = new Sensor();
                 sensor.Name = collection["name"].AsString;
 
-                sensors.Sensors.Add(sensor);
+                if (sensor.Name != "system.version" && sensor.Name != "startup_log")
+                {
+                    sensors.Sensors.Add(sensor);
+                }
             }
 
             return Ok(sensors);
         }
 
         [HttpPost]
-        public IHttpActionResult Add([FromBody]string sensorName)
+        public IHttpActionResult Add([FromBody]Sensor sensor)
         {
             bool foundUnique = false;
             int count = 0;
@@ -47,7 +52,15 @@ namespace ICT_LAB_WEB_API.apiController
             {
                 try
                 {
-                    con.database.CreateCollection(sensorName+count);
+                    sensor.Name = sensor.Type + count;
+
+                    con.database.CreateCollection(sensor.Name);
+
+                    //TODO store the targetapilink
+                    BsonDocument document = new BsonDocument().AddRange(sensor.ToBsonDocument());
+                    
+                    con.database.GetCollection<BsonDocument>(sensor.Name).InsertOne(document);
+                    
                     foundUnique = true;
                 }
                 catch (Exception)
@@ -56,7 +69,7 @@ namespace ICT_LAB_WEB_API.apiController
                 }
             }
 
-            return Ok(sensorName+count);
+            return Ok(sensor.Type+count);
         }
 
         [HttpPost]
