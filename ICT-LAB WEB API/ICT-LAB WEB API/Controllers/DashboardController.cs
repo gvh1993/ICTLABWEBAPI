@@ -8,7 +8,7 @@ using log4net;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : AuthorizationController
     {
         readonly ILog logger;
         public DashboardController()

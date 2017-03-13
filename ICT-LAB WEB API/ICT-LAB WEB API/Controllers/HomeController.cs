@@ -10,12 +10,14 @@ using System.Web.Mvc;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
+    
     public class HomeController : Controller
     {
         readonly ILog logger;
         public HomeController()
         {
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            
         }
 
         public ActionResult Index()
@@ -28,12 +30,17 @@ namespace ICT_LAB_WEB_API.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            User user = new User() { Role = Enums.UserRoles.Visitor };
+            return View(user);
         }
 
         [HttpPost]
         public ActionResult Login(User user)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
             //check passwords
             /* Fetch the stored value */
             MongoDB.MongoDBConnector con = new MongoDB.MongoDBConnector();
@@ -70,7 +77,19 @@ namespace ICT_LAB_WEB_API.Controllers
                 }
             }
 
-            return View();
+            // create session
+            Session["User_Role"] = user.Role;
+            Session["User_Email"] = user.Email;
+            return RedirectToAction("Index", "Home");
+        }
+
+        [AuthorizeUser(UserRole = "Admin, Visitor")]
+        public ActionResult Logout()
+        {
+            Session["User_Role"] = null;
+            Session["User_Email"] = null;
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

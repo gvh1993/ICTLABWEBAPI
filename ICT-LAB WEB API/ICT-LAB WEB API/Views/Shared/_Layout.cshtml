@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using ICT_LAB_WEB_API.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,6 +24,17 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Dashboard","Index", "Dashboard")</li>
+                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["User_Email"] != null)
+                    {
+                        <li class="navbar-text">@Session["User_Email"] (@Session["User_Role"])<i class="glyphicon glyphicon-user"></i></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
+                    else{ 
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -30,9 +42,6 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
