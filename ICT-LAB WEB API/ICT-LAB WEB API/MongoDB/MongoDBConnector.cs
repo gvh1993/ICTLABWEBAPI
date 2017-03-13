@@ -8,6 +8,7 @@ namespace ICT_LAB_WEB_API.MongoDB
     public class MongoDBConnector
     {
         public IMongoDatabase database { get; set; }
+        public IMongoDatabase userDatabase { get; set; }
         public IMongoClient client { get; set; }
         readonly log4net.ILog logger;
 
@@ -15,18 +16,17 @@ namespace ICT_LAB_WEB_API.MongoDB
         {
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             string url = ConfigurationSettings.AppSettings["MongoDBURL"];
+
             try
             {
                 client = new MongoClient(url);
                 database = client.GetDatabase("local");
+                userDatabase = client.GetDatabase("admin");
             }
             catch (System.Exception ex)
             {
                 logger.Error("Could not connect to database! " + ex);
             }
-            
         }
-
-
     }
 }

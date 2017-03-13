@@ -56,7 +56,6 @@ namespace ICT_LAB_WEB_API.apiController
 
                     con.database.CreateCollection(sensor.Name);
 
-                    //TODO store the targetapilink
                     BsonDocument document = new BsonDocument().AddRange(sensor.ToBsonDocument());
                     
                     con.database.GetCollection<BsonDocument>(sensor.Name).InsertOne(document);

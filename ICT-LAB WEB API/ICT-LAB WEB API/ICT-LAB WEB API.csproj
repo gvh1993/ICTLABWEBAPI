@@ -142,7 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helper\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="apiController\SensorController.cs" />
@@ -185,9 +185,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Enums.cs" />
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorType.cs" />
     <Compile Include="Models\SensorViewModel.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="MongoDB\MongoDBConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -246,6 +249,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Add.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
