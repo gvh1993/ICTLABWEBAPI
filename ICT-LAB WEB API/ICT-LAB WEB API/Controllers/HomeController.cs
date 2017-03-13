@@ -94,9 +94,27 @@ namespace ICT_LAB_WEB_API.Controllers
             {
                 return View(user);
             }
-            //check if alredy exist
+            
+            MongoDB.MongoDBConnector con = new MongoDB.MongoDBConnector();
 
+            try
+            {
+                // check if alredy exist
+                var filter = Builders<BsonDocument>.Filter.Eq("Email", user.Email);
+                var foundUsers = con.userDatabase.GetCollection<BsonDocument>(user.Role + "s").Find<BsonDocument>(
+                    filter
+                    );
 
+                if (foundUsers.Any())
+                {
+                    TempData["Error"] = "User already exists";
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
             //hash + salt password
             register.Password = CodePassword(user.Password);
             var document = new BsonDocument().AddRange(register.ToBsonDocument());
@@ -104,7 +122,7 @@ namespace ICT_LAB_WEB_API.Controllers
             //Register
             try
             {
-                MongoDB.MongoDBConnector con = new MongoDB.MongoDBConnector();
+                
                 con.userDatabase.GetCollection<BsonDocument>(user.Role.ToString() + "s").InsertOne(document);
             }
             catch (Exception ex)
@@ -112,8 +130,7 @@ namespace ICT_LAB_WEB_API.Controllers
                 logger.Error("Could not connect to Database. " + ex);
             }
 
-            //TODO automatically login
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
 
         private string CodePassword(string password)
