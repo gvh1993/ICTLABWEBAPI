@@ -125,7 +125,7 @@ namespace ICT_LAB_WEB_API.Controllers
 
                 if (foundUsers.Any())
                 {
-                    TempData["Error"] = "User already exists";
+                    TempData["Error"] = "User already exists.";
                     return View();
                 }
             }
