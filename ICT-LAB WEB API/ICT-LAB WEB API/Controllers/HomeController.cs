@@ -10,14 +10,12 @@ using System.Web.Mvc;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
-    
     public class HomeController : Controller
     {
         readonly ILog logger;
         public HomeController()
         {
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            
         }
 
         public ActionResult Index()
@@ -95,6 +93,7 @@ namespace ICT_LAB_WEB_API.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            //set Role for default value listbox form
             User user = new User() { Role = Enums.UserRoles.Visitor };
             return View(user);
         }
