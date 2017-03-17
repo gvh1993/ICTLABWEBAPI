@@ -1,4 +1,5 @@
-﻿using ICT_LAB_WEB_API.Helper;
+﻿using ICT_LAB_WEB_API.Attributes;
+using ICT_LAB_WEB_API.Helper;
 using ICT_LAB_WEB_API.Models;
 using log4net;
 using MongoDB.Bson;
@@ -15,7 +16,7 @@ namespace ICT_LAB_WEB_API.Controllers
         readonly ILog logger;
         public HomeController()
         {
-            logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
 
         public ActionResult Index()
@@ -81,7 +82,7 @@ namespace ICT_LAB_WEB_API.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [AuthorizeUser(UserRole = "Admin, Visitor")]
+        [AuthorizeMVC(UserRole = "Admin, Visitor")]
         public ActionResult Logout()
         {
             Session["User_Role"] = null;
@@ -131,7 +132,7 @@ namespace ICT_LAB_WEB_API.Controllers
             }
             catch (Exception ex)
             {
-
+                logger.Error("Could not connect to the database.",ex);
             }
             //hash + salt password
             register.Password = CodePassword(user.Password);
@@ -171,10 +172,5 @@ namespace ICT_LAB_WEB_API.Controllers
 
             return savedPasswordHash;
         }
-
-
-
     }
-
-
 }

@@ -3,9 +3,12 @@ using System.Web.Http;
 using ICT_LAB_WEB_API.MongoDB;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Web.Mvc;
+using ICT_LAB_WEB_API.Attributes;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
+    [System.Web.Http.Authorize]
     public class TemperatureController : ApiController
     {
         //GET api/temperatures

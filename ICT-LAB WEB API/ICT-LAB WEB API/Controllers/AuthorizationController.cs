@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ICT_LAB_WEB_API.Controllers
 {
-    [AuthorizeUser(UserRole ="Admin, Visitor")]
+    [AuthorizeMVC(UserRole ="Admin, Visitor")]
     public abstract class AuthorizationController : Controller
     {
 

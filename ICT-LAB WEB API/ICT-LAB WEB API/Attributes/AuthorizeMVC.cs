@@ -3,7 +3,7 @@
 namespace System.Web.Mvc
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class AuthorizeUser : AuthorizeAttribute
+    public class AuthorizeMVC : AuthorizeAttribute
     {
         public string UserRole { get; set; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
@@ -23,6 +23,5 @@ namespace System.Web.Mvc
                 return false;
             }
         }
-
     }
 }

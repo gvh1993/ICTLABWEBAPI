@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web.Http;
 using System.Web.Mvc;
 using ICT_LAB_WEB_API.Models;
 using ICT_LAB_WEB_API.MongoDB;
