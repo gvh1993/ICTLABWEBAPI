@@ -1,8 +1,7 @@
 ﻿angular.module("app").controller("sensorController", ["$scope", "$window", "apiService", "$location",
     function ($scope, $window, apiService, $location) {
         //GET SENSOR LIST
-        $scope.sensors = $window.mySensors;
-        
+        $scope.sensors = {};
 
         $scope.removeSensor = function (sensor) {
             apiService.deleteSensor(sensor.Name).then(
@@ -30,6 +29,7 @@
                 });
         };
 
+        $scope.refreshSensors();
 
         //ADD SENSOR
         $scope.sensorTypes = ["Temperature", "Moist", "Light", "Humidity"];

@@ -42,12 +42,8 @@ namespace Dashboard.Controllers
             //        logger.Error("Could not retrieve list collections from database. " + ex);
             //    }
             //return View(sensors);
-            WebClient client = new WebClient();
-
-            client.BaseAddress = ConfigurationManager.AppSettings["WebApi"];
-            var result = client.DownloadString("api/Sensor");
-
-            return View(result);
+            SensorViewModel model = new SensorViewModel();
+            return View(model);
         }
 
         //sensor

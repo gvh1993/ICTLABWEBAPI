@@ -8,12 +8,6 @@ namespace ICTLAB
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/angularJS")
-               .Include("~/Scripts/angular.js")
-               .Include("~/app/app.js")
-               .Include("~/app/services/apiService.js")
-               .IncludeDirectory("~/app/controllers", "*.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

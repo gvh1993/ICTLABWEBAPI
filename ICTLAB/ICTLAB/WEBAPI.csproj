@@ -207,7 +207,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="apiControllers\SensorController.cs" />
     <Compile Include="apiControllers\TemperatureController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -253,10 +252,8 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorType.cs" />
-    <Compile Include="Models\SensorViewModel.cs" />
     <Compile Include="MongoDB\MongoDBConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
