@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div ng-app="app" ng-controller="accountController">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" type="text" class="form-control" ng-model="userLoginEmail" />
+
+        <label for="password">Password:</label>
+        <input id="password" type="password" class="form-control"
+               ng-model="userLoginPassword" />
+
+
+        <button class="form-control btn btn-success" ng-click="login()">Login</button>
+    </div>
+</div>
