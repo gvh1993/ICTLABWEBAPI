@@ -52,6 +52,14 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
             return resp;
+        },
+        logout: function () {
+            var resp = $http({
+                url: "/api/Account/Logout",
+                method: "POST",
+                headers: authHeaders
+            });
+            return resp;
         }
     };
 }])
