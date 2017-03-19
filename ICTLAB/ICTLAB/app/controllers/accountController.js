@@ -82,8 +82,6 @@
             function errorCallback(result) {
                 var x = result
             });
-    
-
     };
 
 }]);
