@@ -72,16 +72,18 @@
     }
 
     $scope.logout = function () {
+
         apiService.logout().then(
             function successCallback(result) {
                 var x = result;
+                sessionStorage.removeItem('accessToken');
+                window.location.href = '/Login/Login';
             },
             function errorCallback(result) {
                 var x = result
             });
     
-        sessionStorage.removeItem('accessToken');
-        window.location.href = '/Login/Login';
+
     };
 
 }]);
