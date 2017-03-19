@@ -2,21 +2,33 @@
     var httpConfig = {
     };
 
+    var accesstoken = sessionStorage.getItem('accessToken');
+
+    var authHeaders = {};
+    if (accesstoken) {
+        authHeaders.Authorization = 'Bearer ' + accesstoken;
+    }
+
     return {
         addSensor: function(sensor) {
-            return $http.post("/api/Sensor/Add", sensor);
+            var response = $http({
+                url: "/api/Sensor/Add",
+                method: "POST",
+                data: sensor,
+                headers: authHeaders
+            });
+            return response;
         },
         deleteSensor: function(sensorName) {
-            return $http.post("/api/Sensor/Delete?sensorName="+sensorName);
+            //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
+            var response = $http({
+                url: "/api/Sensor/Delete?sensorName=" + sensorName,
+                method: "POST",
+                headers: authHeaders
+            });
+            return response;
         },
         getSensors: function () {
-            var accesstoken = sessionStorage.getItem('accessToken');
-
-            var authHeaders = {};
-            if (accesstoken) {
-                authHeaders.Authorization = 'Bearer ' + accesstoken;
-            }
-
             var response = $http({
                 url: "/api/Sensor",
                 method: "GET",
@@ -25,8 +37,6 @@
             return response;
         },
         register: function (userInfo) {
-            //return $http.post("api/Account/Register", userInfo);
-
             var resp = $http({
                 url: "/api/Account/Register",
                 method: "POST",

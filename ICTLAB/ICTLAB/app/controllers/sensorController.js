@@ -29,7 +29,7 @@
                 });
         };
 
-        $scope.refreshSensors();
+
 
         //ADD SENSOR
         $scope.sensorTypes = ["Temperature", "Moist", "Light", "Humidity"];
@@ -47,4 +47,6 @@
                     alert("failed to add new sensor");
                 });
         }
+
+        $scope.refreshSensors();
     }]);

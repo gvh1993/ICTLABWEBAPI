@@ -14,6 +14,7 @@ using ICTLAB.Services;
 
 namespace ICTLAB.ApiControllers
 {
+    [Authorize]
     public class SensorController : ApiController
     {
         private ISensorService sensorService;
@@ -36,28 +37,6 @@ namespace ICTLAB.ApiControllers
         [HttpPost]
         public IHttpActionResult Add([FromBody]Sensor sensor)
         {
-            //bool foundUnique = false;
-            //int count = 0;
-
-            //while (!foundUnique)
-            //{
-            //    try
-            //    {
-            //        sensor.Name = sensor.Type + count;
-
-            //        con.database.CreateCollection(sensor.Name);
-
-            //        BsonDocument document = new BsonDocument().AddRange(sensor.ToBsonDocument());
-
-            //        con.database.GetCollection<BsonDocument>(sensor.Name).InsertOne(document);
-
-            //        foundUnique = true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        count++;
-            //    }
-            //}
             var result = sensorService.CreateFirstAvailableSensorName(sensor);
             return Ok(result);
         }

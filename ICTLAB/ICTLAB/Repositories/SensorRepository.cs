@@ -17,15 +17,12 @@ namespace ICTLAB.Repositories
             return database.ListCollections();
         }
 
-        public bool Create(Sensor sensor)
+        public bool Create(string sensorName)
         {
             try
             {
-                database.CreateCollection(sensor.Name);
+                database.CreateCollection(sensorName);
 
-                BsonDocument document = new BsonDocument().AddRange(sensor.ToBsonDocument());
-
-                database.GetCollection<BsonDocument>(sensor.Name).InsertOne(document);
                 return true;
             }
             catch (Exception ex)

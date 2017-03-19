@@ -26,26 +26,23 @@ namespace ICTLAB.Services
 
             while (!foundUnique)
             {
-                try
+                sensorName = sensor.Type + count;
+                if (sensorRepository.Create(sensorName))
                 {
-                    sensorName = sensor.Type + count;
-                    sensorRepository.Create(sensor);
-
                     BsonDocument document = new BsonDocument().AddRange(sensor.ToBsonDocument());
 
-                    var collection = sensorRepository.GetCollectionByName(sensor.Name);
+                    var collection = sensorRepository.GetCollectionByName(sensorName);
                     sensorRepository.InsertDocumentToSensor(document, sensorName);
 
                     foundUnique = true;
-
                 }
-                catch (Exception ex)
+                else
                 {
                     count++;
                 }
             }
 
-            return "";
+            return sensorName;
         }
 
         public bool DeleteSensorByName(string sensorName)

@@ -74,7 +74,7 @@
     $scope.logout = function () {
 
         sessionStorage.removeItem('accessToken');
-        window.location.href = '/Login/SecurityInfo';
+        window.location.href = '/Login/Login';
     };
 
 }]);
