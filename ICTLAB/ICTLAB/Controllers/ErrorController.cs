@@ -13,10 +13,11 @@ namespace ICTLAB.Controllers
         {
             return View();
         }
-        public ViewResult Unauthorised()
+        public ActionResult Unauthorised()
         {
             //Response.StatusCode = 401; // Do not set this or else you get a redirect loop
-            return View();
+            // much fun gandalf youshallnotpass page return View();
+            return RedirectToAction("Login","Login");
         }
     }
 }

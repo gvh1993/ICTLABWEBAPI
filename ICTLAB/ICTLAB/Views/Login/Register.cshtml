@@ -4,21 +4,46 @@
 
 <h2>Register</h2>
 
-<div ng-app="app" ng-controller="accountController">
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input id="email" type="text" class="form-control" ng-model="userRegistrationEmail"/>
-
-        <label for="password">Password:</label>
-        <input id="password" type="password" class="form-control"
-               ng-model="userRegistrationPassword"/>
-
-        <label for="confirmPassword">Confirm password:</label>
-        <input id="confirmPassword" type="password" class="form-control"
-               ng-model="userRegistrationConfirmPassword"/>
-
-        <button type="submit" class="form-control btn btn-success" ng-click="registerUser()">Register</button>
+<div ng-app="app" ng-controller="accountController" ng-cloak>
+    <div class="row">
+        <div class="col-md-10 form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <input type="text" class="form-control" ng-model="userRegistrationEmail" placeholder="Email address" />
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input id="password" type="password" class="form-control"
+                       ng-model="userRegistrationPassword" placeholder="Password" />
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input id="confirmPassword" type="password" class="form-control"
+                       ng-model="userRegistrationConfirmPassword" placeholder="Confirm password" />
+            </div>
+            <br />
+            <div class="input-group">
+                <button type="submit" class="form-control btn btn-success" ng-click="registerUser()">Register</button>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div ng-show="loading" class="right">
+                <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
     </div>
+    <div class="row">
+        @*show error data*@
+        <div ng-repeat="model in responseData">
+            <ul ng-repeat="error in model">
+                <li class="text-danger" ng-bind="error"></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-    {{responseData}}
+
 </div>

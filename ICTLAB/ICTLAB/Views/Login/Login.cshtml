@@ -4,16 +4,38 @@
 
 <h2>Login</h2>
 
+
 <div ng-app="app" ng-controller="accountController">
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input id="email" type="text" class="form-control" ng-model="userLoginEmail" />
-
-        <label for="password">Password:</label>
-        <input id="password" type="password" class="form-control"
-               ng-model="userLoginPassword" />
-
-
-        <button type="submit" class="form-control btn btn-success" ng-click="login()">Login</button>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <input type="text" class="form-control" ng-model="userLoginEmail" placeholder="Email address" />
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input type="password" class="form-control"
+                       ng-model="userLoginPassword" placeholder="Password" />
+            </div>
+            <br />
+            <div class="input-group">
+                <button type="submit" class="form-control btn btn-success" ng-click="login()">Login</button>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div ng-show="loading" class="right">
+                <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="responseData != ''">
+        @*show error data*@
+        <div>
+            <ul>
+                <li class="text-danger" ng-bind="responseData"></li>
+            </ul>
+        </div>
     </div>
 </div>

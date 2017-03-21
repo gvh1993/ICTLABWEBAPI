@@ -35,6 +35,7 @@ namespace ICTLAB.Models
     public class RegisterBindingModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
