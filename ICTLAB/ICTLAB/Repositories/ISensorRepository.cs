@@ -12,10 +12,12 @@ namespace ICTLAB.Repositories
     interface ISensorRepository
     {
         IAsyncCursor<BsonDocument> Get();
-        bool Create(string sensorName);
+        List<BsonDocument> GetByHome(IMongoCollection<BsonDocument> collection);
+        bool Create(Sensor sensor, IMongoCollection<BsonDocument> collection);
         bool Delete(string collectionName);
         IMongoCollection<BsonDocument> GetCollectionByName(string sensorName);
         bool InsertDocumentToSensor(BsonDocument document, string sensorName);
+
         
     }
 }

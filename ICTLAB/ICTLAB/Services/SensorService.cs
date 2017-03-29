@@ -18,31 +18,13 @@ namespace ICTLAB.Services
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             sensorRepository = new SensorRepository();
         }
-        public string CreateFirstAvailableSensorName(Sensor sensor)
+        public bool Create(Sensor sensor)
         {
-            string sensorName = "";
-            bool foundUnique = false;
-            int count = 0;
+            
+            var collection = sensorRepository.GetCollectionByName(sensor.Home);
+            bool result = sensorRepository.Create(sensor, collection);
 
-            while (!foundUnique)
-            {
-                sensorName = sensor.Type + count;
-                if (sensorRepository.Create(sensorName))
-                {
-                    BsonDocument document = new BsonDocument().AddRange(sensor.ToBsonDocument());
-
-                    var collection = sensorRepository.GetCollectionByName(sensorName);
-                    sensorRepository.InsertDocumentToSensor(document, sensorName);
-
-                    foundUnique = true;
-                }
-                else
-                {
-                    count++;
-                }
-            }
-
-            return sensorName;
+            return result;
         }
 
         public bool DeleteSensorByName(string sensorName)
@@ -52,21 +34,29 @@ namespace ICTLAB.Services
 
         public List<Sensor> Get()
         {
+            throw new NotImplementedException();
+        }
+        public List<Sensor> GetByHome(string home)
+        {
             List<Sensor> sensors = new List<Sensor>();
 
-            var collections = sensorRepository.Get().ToList();
+            //get collection named {{home}}
+            var collection = sensorRepository.GetCollectionByName(home);
 
-            foreach (var collection in collections)
+            var result = sensorRepository.GetByHome(collection).ToList();
+
+            foreach (var document in result)
             {
                 Sensor sensor = new Sensor()
                 {
-                    Name = collection["name"].AsString
+                    //_id = document["_id"].AsObjectId.ToString(),
+                    Name = document["Name"].AsString,
+                    Type = document["Type"].AsString,
+                    TargetApiLink = document["TargetApiLink"].AsString
                 };
-                if (sensor.Name != "system.version" && sensor.Name != "startup_log")
-                {
-                    sensors.Add(sensor);
-                }
+                sensors.Add(sensor);
             }
+            //get documents from the collection
             return sensors;
         }
     }

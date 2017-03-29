@@ -17,12 +17,12 @@ namespace ICTLAB.Repositories
             return database.ListCollections();
         }
 
-        public bool Create(string sensorName)
+        public bool Create(Sensor sensor, IMongoCollection<BsonDocument> collection)
         {
             try
             {
-                database.CreateCollection(sensorName);
-
+                var document = sensor.ToBsonDocument();
+                collection.InsertOne(document, null);
                 return true;
             }
             catch (Exception ex)
@@ -62,6 +62,12 @@ namespace ICTLAB.Repositories
                 return false;
             }
             
+        }
+
+        public List<BsonDocument> GetByHome(IMongoCollection<BsonDocument> home)
+        {
+            var documents = home.Find(Builders<BsonDocument>.Filter.Empty).ToList();
+            return documents;
         }
     }
 }

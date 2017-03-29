@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script>
+    var home = '@ViewBag.ID'
+</script>
+
+<h2>@ViewBag.ID - Sensors</h2>
+
+<div ng-app="app" ng-controller="sensorController" data-ng-init="refreshSensors()">
+    <div class="col-md-10" ng-cloak>
+        <table class="table up">
+            <tr ng-repeat="sensor in sensors track by $index">
+                <td class="col-md-10" ng-bind="sensor.Name"></td>
+                <td ng-click="removeSensor(sensor)"><a href="" class="col-md-2 glyphicon glyphicon-remove"></a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Add Sensor", "Add", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
+    </div>
+</div>

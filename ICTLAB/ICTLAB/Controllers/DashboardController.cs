@@ -16,13 +16,13 @@ namespace ICTLAB.Controllers
         {
             logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
-        // GET: Sensor
+        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
 
-        //sensor
+        //Add Home
         public ActionResult Add()
         {
             return View();

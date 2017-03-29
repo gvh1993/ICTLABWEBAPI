@@ -5,20 +5,23 @@
 
 @Scripts.Render("~/bundles/angularJS", "~/bundles/scripts")
 
-<h2>Sensors</h2>
+<h2>Homes</h2>
 
-<div ng-app="app" ng-controller="sensorController">
+<div ng-app="app" ng-controller="homeController">
     <div class="col-md-10" ng-cloak>
         <table class="table up">
-            <tr ng-repeat="sensor in sensors">
-                <td class="col-md-10"ng-bind="sensor.Name"></td>
-                <td ng-click="removeSensor(sensor)" ><a href="" class="col-md-2 glyphicon glyphicon-remove"></a></td>
+            <tr ng-repeat="home in homes">
+                @*<td class="col-md-10" ng-bind="home.Name"><a href=""></a></td>*@
+                <td class="col-md-10"><a href="/Sensor?id={{home.Name}}" target="_self">{{home.Name}}  </a></td>
+                <td ng-click="removeHome(home)"><a href="" class="col-md-2 glyphicon glyphicon-remove"></a></td>
             </tr>
         </table>
     </div>
     <div class="col-md-2">
-        @Html.ActionLink("Add Sensor", "Add", null, new {@class = "btn btn-default" })
+        @Html.ActionLink("Add Home", "Add", null, new { @class = "btn btn-default" })
     </div>
 </div>
+
+
 
 

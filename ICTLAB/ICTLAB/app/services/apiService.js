@@ -10,6 +10,32 @@
     }
 
     return {
+        addHome: function (home) {
+            var response = $http({
+                url: "/api/Home/Add",
+                method: "PUT",
+                data: home,
+                headers: authHeaders
+            });
+            return response;
+        },
+        deleteHome: function (name) {
+            //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
+            var response = $http({
+                url: "/api/Home/Delete?name="+name,
+                method: "DELETE",
+                headers: authHeaders
+            });
+            return response;
+        },
+        getHomes: function () {
+            var response = $http({
+                url: "/api/Home",
+                method: "GET",
+                headers: authHeaders
+            });
+            return response;
+        },
         addSensor: function(sensor) {
             var response = $http({
                 url: "/api/Sensor/Add",
@@ -28,9 +54,9 @@
             });
             return response;
         },
-        getSensors: function () {
+        getSensors: function (home) {
             var response = $http({
-                url: "/api/Sensor",
+                url: "/api/Sensor/Get?home="+home,
                 method: "GET",
                 headers: authHeaders
             });

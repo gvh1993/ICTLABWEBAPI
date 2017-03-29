@@ -25,10 +25,10 @@ namespace ICTLAB.ApiControllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(string home)
         {
             //give list of all sensors
-            var result = sensorService.Get();
+            var result = sensorService.GetByHome(home);
             
 
             return Ok(result);
@@ -37,8 +37,15 @@ namespace ICTLAB.ApiControllers
         [HttpPost]
         public IHttpActionResult Add([FromBody]Sensor sensor)
         {
-            var result = sensorService.CreateFirstAvailableSensorName(sensor);
-            return Ok(result);
+            var result = sensorService.Create(sensor);
+            if (result)
+            {
+                return Ok(sensor.Name);
+            }
+            else
+            {
+                return InternalServerError();
+            }
         }
 
         [HttpPost]
