@@ -17,7 +17,7 @@ namespace ICTLAB.Repositories
             return database.ListCollections();
         }
 
-        public bool Create(Sensor sensor, IMongoCollection<BsonDocument> collection)
+        public bool Create(SensorCreate sensor, IMongoCollection<BsonDocument> collection)
         {
             try
             {
@@ -31,11 +31,16 @@ namespace ICTLAB.Repositories
             }
         }
 
-        public bool Delete(string collectionName)
+        public bool Delete(Sensor sensor)
         {
             try
             {
-                database.DropCollection(collectionName);
+                
+                var collection = database.GetCollection<BsonDocument>(sensor.Home);
+
+
+                var result = collection.DeleteOne(Builders<BsonDocument>.Filter.Eq( "_id", ObjectId.Parse(sensor._id)), null);
+                
                 return true;
             }
             catch (Exception ex)

@@ -7,14 +7,11 @@
             apiService.deleteHome(home.Name).then(
                 function successCallback(result) {
                     $scope.refreshHomes();
-                    //alert("deleted " + home.Name);
                 },
                 function errorCallback(result) {
                     alert("unable to delete: " + home.Name);
                 }
             );
-
-            //$scope.$apply($scope.refreshHomes());
         };
 
         $scope.refreshHomes = function () {

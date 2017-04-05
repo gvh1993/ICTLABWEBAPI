@@ -1,8 +1,12 @@
-﻿namespace ICTLAB.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ICTLAB.Models
 {
-    public class Sensor
+    public class SensorCreate
     {
-        public string _id { get; set; }
         public string Type { get; set; }
         public string TargetApiLink { get; set; }
         public string Name { get; set; }

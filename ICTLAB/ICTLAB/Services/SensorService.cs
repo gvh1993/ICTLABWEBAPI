@@ -18,7 +18,7 @@ namespace ICTLAB.Services
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             sensorRepository = new SensorRepository();
         }
-        public bool Create(Sensor sensor)
+        public bool Create(SensorCreate sensor)
         {
             
             var collection = sensorRepository.GetCollectionByName(sensor.Home);
@@ -27,9 +27,11 @@ namespace ICTLAB.Services
             return result;
         }
 
-        public bool DeleteSensorByName(string sensorName)
+        public bool DeleteSensorByName(Sensor sensor)
         {
-            return sensorRepository.Delete(sensorName);
+             
+            //delete sensor by home
+            return sensorRepository.Delete(sensor);
         }
 
         public List<Sensor> Get()
@@ -49,10 +51,11 @@ namespace ICTLAB.Services
             {
                 Sensor sensor = new Sensor()
                 {
-                    //_id = document["_id"].AsObjectId.ToString(),
+                    _id = document["_id"].AsObjectId.ToString(),
                     Name = document["Name"].AsString,
                     Type = document["Type"].AsString,
-                    TargetApiLink = document["TargetApiLink"].AsString
+                    TargetApiLink = document["TargetApiLink"].AsString,
+                    Home = home
                 };
                 sensors.Add(sensor);
             }

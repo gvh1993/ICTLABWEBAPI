@@ -11,7 +11,7 @@ namespace ICTLAB.Services
     {
         List<Sensor> Get();
         List<Sensor> GetByHome(string home);
-        bool Create(Sensor sensor);
-        bool DeleteSensorByName(string sensorName);
+        bool Create(SensorCreate sensor);
+        bool DeleteSensorByName(Sensor sensor);
     }
 }

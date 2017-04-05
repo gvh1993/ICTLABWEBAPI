@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace ICTLAB.apiControllers
 {
-    
+    [Authorize]
     public class HomeController : ApiController
     {
         IHomeService homeService;

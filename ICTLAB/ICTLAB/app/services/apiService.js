@@ -38,18 +38,20 @@
         },
         addSensor: function(sensor) {
             var response = $http({
-                url: "/api/Sensor/Add",
-                method: "POST",
+                url: "/api/Sensor/AddSensor",
+                method: "Post",
                 data: sensor,
                 headers: authHeaders
             });
             return response;
         },
-        deleteSensor: function(sensorName) {
+        deleteSensor: function(sensor) {
             //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
             var response = $http({
-                url: "/api/Sensor/Delete?sensorName=" + sensorName,
+                url: "/api/Sensor/DeleteSensor",
                 method: "POST",
+                data: sensor,
+                //headers: { authHeaders, 'Content-Type': 'application/json' }
                 headers: authHeaders
             });
             return response;

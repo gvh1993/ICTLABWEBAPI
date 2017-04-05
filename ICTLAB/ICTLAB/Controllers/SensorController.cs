@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ICTLAB.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class SensorController : Controller
     {
         // GET: Sensor

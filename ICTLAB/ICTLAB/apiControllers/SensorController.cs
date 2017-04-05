@@ -14,6 +14,7 @@ using ICTLAB.Services;
 
 namespace ICTLAB.ApiControllers
 {
+    [RoutePrefix("api/Sensor")]
     [Authorize]
     public class SensorController : ApiController
     {
@@ -33,9 +34,9 @@ namespace ICTLAB.ApiControllers
 
             return Ok(result);
         }
-
+        [Route("AddSensor")]
         [HttpPost]
-        public IHttpActionResult Add([FromBody]Sensor sensor)
+        public IHttpActionResult Add([FromBody]SensorCreate sensor)
         {
             var result = sensorService.Create(sensor);
             if (result)
@@ -48,10 +49,11 @@ namespace ICTLAB.ApiControllers
             }
         }
 
+        [Route("DeleteSensor")]
         [HttpPost]
-        public IHttpActionResult Delete(string sensorName)
+        public IHttpActionResult Delete([FromBody]Sensor sensor)
         {
-            if (sensorService.DeleteSensorByName(sensorName))
+            if (sensorService.DeleteSensorByName(sensor))
             {
                 return Ok();
             }

@@ -259,7 +259,7 @@
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Sensor.cs" />
-    <Compile Include="Models\SensorType.cs" />
+    <Compile Include="Models\SensorCreate.cs" />
     <Compile Include="Models\SensorViewModel.cs" />
     <Compile Include="MongoDB\MongoDBConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
