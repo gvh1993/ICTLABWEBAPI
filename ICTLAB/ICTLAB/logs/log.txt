@@ -1,0 +1,1 @@
+ERROR 2017-04-07 14:45:30,370 86257ms HomeRepository         Get                - Could not retrieve homes from DB

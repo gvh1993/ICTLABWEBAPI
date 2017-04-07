@@ -34,10 +34,6 @@ namespace ICTLAB.Services
             return sensorRepository.Delete(sensor);
         }
 
-        public List<Sensor> Get()
-        {
-            throw new NotImplementedException();
-        }
         public List<Sensor> GetByHome(string home)
         {
             List<Sensor> sensors = new List<Sensor>();

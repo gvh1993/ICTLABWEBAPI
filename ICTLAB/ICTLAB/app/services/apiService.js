@@ -22,7 +22,7 @@
         deleteHome: function (name) {
             //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
             var response = $http({
-                url: "/api/Home/Delete?name="+name,
+                url: "/api/Home/Delete?name=" + name,
                 method: "DELETE",
                 headers: authHeaders
             });
@@ -36,7 +36,7 @@
             });
             return response;
         },
-        addSensor: function(sensor) {
+        addSensor: function (sensor) {
             var response = $http({
                 url: "/api/Sensor/AddSensor",
                 method: "Post",
@@ -45,7 +45,7 @@
             });
             return response;
         },
-        deleteSensor: function(sensor) {
+        deleteSensor: function (sensor) {
             //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
             var response = $http({
                 url: "/api/Sensor/DeleteSensor",
@@ -58,7 +58,7 @@
         },
         getSensors: function (home) {
             var response = $http({
-                url: "/api/Sensor/Get?home="+home,
+                url: "/api/Sensor/Get?home=" + home,
                 method: "GET",
                 headers: authHeaders
             });
@@ -90,4 +90,4 @@
             return resp;
         }
     };
-}])
+}]);

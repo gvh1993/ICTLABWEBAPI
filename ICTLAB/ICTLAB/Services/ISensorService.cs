@@ -9,7 +9,6 @@ namespace ICTLAB.Services
 {
     interface ISensorService
     {
-        List<Sensor> Get();
         List<Sensor> GetByHome(string home);
         bool Create(SensorCreate sensor);
         bool DeleteSensorByName(Sensor sensor);

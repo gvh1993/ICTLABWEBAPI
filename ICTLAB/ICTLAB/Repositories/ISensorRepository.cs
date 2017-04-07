@@ -11,7 +11,6 @@ namespace ICTLAB.Repositories
 {
     interface ISensorRepository
     {
-        IAsyncCursor<BsonDocument> Get();
         List<BsonDocument> GetByHome(IMongoCollection<BsonDocument> collection);
         bool Create(SensorCreate sensor, IMongoCollection<BsonDocument> collection);
         bool Delete(Sensor sensor);

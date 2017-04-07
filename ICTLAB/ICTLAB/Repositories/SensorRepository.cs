@@ -7,14 +7,17 @@ using ICTLAB.MongoDB;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using ICTLAB.Models;
+using log4net;
 
 namespace ICTLAB.Repositories
 {
     public class SensorRepository : MongoDBConnector, ISensorRepository
     {
-        public IAsyncCursor<BsonDocument> Get()
+        ILog logger;
+
+        public SensorRepository()
         {
-            return database.ListCollections();
+            logger = LogManager.GetLogger(typeof(SensorRepository));
         }
 
         public bool Create(SensorCreate sensor, IMongoCollection<BsonDocument> collection)
@@ -27,6 +30,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
+                logger.Error("could not create sensor", ex);
                 return false;
             }
         }
@@ -35,9 +39,7 @@ namespace ICTLAB.Repositories
         {
             try
             {
-                
                 var collection = database.GetCollection<BsonDocument>(sensor.Home);
-
 
                 var result = collection.DeleteOne(Builders<BsonDocument>.Filter.Eq( "_id", ObjectId.Parse(sensor._id)), null);
                 
@@ -45,13 +47,23 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
+                logger.Error("Could not delete sensor", ex);
                 return false;
             }
         }
 
         public IMongoCollection<BsonDocument> GetCollectionByName(string sensorName)
         {
-            return database.GetCollection<BsonDocument>(sensorName);
+            try
+            {
+                return database.GetCollection<BsonDocument>(sensorName);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Could not get collection by name",ex);
+                return null;
+            }
+            
         }
 
         public bool InsertDocumentToSensor(BsonDocument document, string sensorName)
@@ -64,6 +76,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
+                logger.Error("Could not insert collection to DB", ex);
                 return false;
             }
             
@@ -71,8 +84,16 @@ namespace ICTLAB.Repositories
 
         public List<BsonDocument> GetByHome(IMongoCollection<BsonDocument> home)
         {
-            var documents = home.Find(Builders<BsonDocument>.Filter.Empty).ToList();
-            return documents;
+            try
+            {
+                var documents = home.Find(Builders<BsonDocument>.Filter.Empty).ToList();
+                return documents;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Could not retrieve sensor by home", ex);
+                return new List<BsonDocument>();
+            }
         }
     }
 }

@@ -5,15 +5,17 @@ using System.Web;
 using ICTLAB.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using log4net;
 
 namespace ICTLAB.Repositories
 {
     public class HomeRepository : MongoDB.MongoDBConnector, IHomeRepository
     {
+        ILog logger;
 
         public HomeRepository()
         {
-
+            logger = log4net.LogManager.GetLogger(typeof(HomeRepository));
         }
 
         //get home
@@ -21,10 +23,12 @@ namespace ICTLAB.Repositories
         {
             try
             {
-                return database.GetCollection<BsonDocument>(name);
+                var x = database.GetCollection<BsonDocument>(name);
+                return x;
             }
             catch (Exception ex)
             {
+                logger.Error("Unable to get collection by the name of " + name, ex);
                 return null;
             }
         }
@@ -38,6 +42,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
+                logger.Error("Could not retrieve homes from DB", ex);
                 return null;
             }
         }
@@ -51,6 +56,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
+                logger.Error("Could not create: "+name, ex);
                 return false;
             }
 
@@ -66,6 +72,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
+                logger.Error("Could not delete collection: "+name, ex);
                 return false;
             }
 
