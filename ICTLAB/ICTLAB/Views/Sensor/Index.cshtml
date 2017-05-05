@@ -18,7 +18,7 @@
                 <th>Remove</th>
             </tr>
             </thead>
-            <tr ng-repeat="sensor in sensors track by $index">
+            <tr ng-repeat="sensor in sensors track by $index" ng-if="sensor.IsActive">
                 @{
                     var url = Url.Action("Details", "Sensor", new { id = "{{id=sensor._id}}" });
                     url = HttpUtility.UrlDecode(url);
