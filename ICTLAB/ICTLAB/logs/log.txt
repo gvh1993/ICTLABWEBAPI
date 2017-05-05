@@ -1,1 +1,155 @@
 ERROR 2017-04-07 14:45:30,370 86257ms HomeRepository         Get                - Could not retrieve homes from DB
+ERROR 2017-05-03 17:34:27,711 63353ms HomeRepository         Get                - Could not retrieve homes from DB
+System.TimeoutException: A timeout occured after 30000ms selecting a server using CompositeServerSelector{ Selectors = ReadPreferenceServerSelector{ ReadPreference = { Mode : Primary } }, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 } }. Client view of cluster state is { ClusterId : "1", ConnectionMode : "Automatic", Type : "Unknown", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/localhost:27017" }", EndPoint: "Unspecified/localhost:27017", State: "Disconnected", Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server. ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:27017
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MongoDB.Driver.Core.Connections.TcpStreamFactory.<ConnectAsync>d__7.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MongoDB.Driver.Core.Connections.TcpStreamFactory.<CreateStreamAsync>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.<OpenHelperAsync>d__48.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at MongoDB.Driver.Core.Servers.ServerMonitor.<HeartbeatAsync>d__27.MoveNext()" }] }.
+   at MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)
+   at MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedHelper.HandleCompletedTask(Task completedTask)
+   at MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChanged(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Clusters.Cluster.SelectServer(IServerSelector selector, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Bindings.ReadPreferenceBinding.GetReadChannelSource(CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.ListCollectionsOperation.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperation[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoDatabaseImpl.ExecuteReadOperation[T](IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoDatabaseImpl.ListCollections(ListCollectionsOptions options, CancellationToken cancellationToken)
+   at ICTLAB.Repositories.HomeRepository.Get() in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\HomeRepository.cs:line 41
+ERROR 2017-05-03 21:31:10,483 1575765ms SensorRepository       Delete             - Could not delete sensor
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at ICTLAB.Repositories.SensorRepository.Delete(Sensor sensor) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 42
+ERROR 2017-05-03 21:33:05,085 1690366ms SensorRepository       Delete             - Could not delete sensor
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.Delete(Sensor sensor) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 44
+ERROR 2017-05-03 21:38:31,139 141217ms SensorRepository       Delete             - Could not delete sensor
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.Delete(Sensor sensor) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 44
+ERROR 2017-05-03 21:44:14,191 157731ms SensorRepository       Delete             - Could not delete sensor
+System.FormatException: 'temperature1' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.Delete(Sensor sensor)
+ERROR 2017-05-05 18:52:58,390 200584ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 18:52:58,445 200639ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:12:13,528 1355722ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:12:13,569 1355763ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:12:21,799 1363993ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:12:21,843 1364038ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:13:09,605 1411799ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:13:09,639 1411833ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:13:22,449 1424644ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:13:22,501 1424695ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:13:45,226 1447420ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:13:45,255 1447449ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:14:25,669 1487863ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:14:25,714 1487908ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-05 19:16:39,339 30376ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 59
+ERROR 2017-05-05 19:16:39,393 30431ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73

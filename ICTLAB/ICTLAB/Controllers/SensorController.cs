@@ -22,5 +22,17 @@ namespace ICTLAB.Controllers
             ViewBag.ID = id;
             return View();
         }
+
+        public ActionResult Details(string id)
+        {
+            ViewBag.ID = id;
+            return View();
+        }
+
+        public ActionResult Manage(string id)
+        {
+            ViewBag.ID = id;
+            return View();
+        }
     }
 }

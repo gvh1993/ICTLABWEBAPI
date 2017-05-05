@@ -45,6 +45,15 @@
             });
             return response;
         },
+        updateSensor: function(sensor) {
+            var response = $http({
+                url: "/api/Sensor/UpdateSensor",
+                method: "Post",
+                data: sensor,
+                headers: authHeaders
+            });
+            return response;
+        },
         deleteSensor: function (sensor) {
             //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
             var response = $http({

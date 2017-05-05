@@ -256,10 +256,12 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CreateSensor.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Reading.cs" />
     <Compile Include="Models\Sensor.cs" />
-    <Compile Include="Models\SensorCreate.cs" />
+    <Compile Include="Models\CreateSensorViewModel.cs" />
     <Compile Include="Models\SensorViewModel.cs" />
     <Compile Include="MongoDB\MongoDBConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -293,6 +295,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\bootstrap-switch.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -397,6 +400,8 @@
     <Content Include="Views\Error\Unauthorised.cshtml" />
     <Content Include="Views\Sensor\Add.cshtml" />
     <Content Include="Views\Sensor\Index.cshtml" />
+    <Content Include="Views\Sensor\Details.cshtml" />
+    <Content Include="Views\Sensor\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

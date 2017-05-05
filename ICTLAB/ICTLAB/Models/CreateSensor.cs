@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace ICTLAB.Models
 {
-    public class Sensor
+    public class CreateSensor
     {
-        [BsonId]
-        public string _id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string TargetApiLink { get; set; }
@@ -17,10 +15,9 @@ namespace ICTLAB.Models
         public List<Reading> Readings { get; set; }
         public bool IsActive { get; set; }
 
-        public Sensor()
+        public CreateSensor()
         {
             Readings = new List<Reading>();
         }
     }
-    
 }

@@ -7,56 +7,74 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace ICTLAB.Services
 {
     public class SensorService : ISensorService
     {
-        private ISensorRepository sensorRepository;
+        private readonly ISensorRepository _sensorRepository;
         readonly log4net.ILog logger;
         public SensorService()
         {
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            sensorRepository = new SensorRepository();
+            _sensorRepository = new SensorRepository();
         }
-        public bool Create(SensorCreate sensor)
+        public bool Create(CreateSensorViewModel sensor)
         {
-            
-            var collection = sensorRepository.GetCollectionByName(sensor.Home);
-            bool result = sensorRepository.Create(sensor, collection);
+            CreateSensor newSensor = new CreateSensor()
+            {
+                Home = sensor.Home,
+                Name = sensor.Name,
+                TargetApiLink = sensor.TargetApiLink,
+                Type = sensor.Type.ToLower(),
+                Unit = sensor.Unit,
+                IsActive = true
+            };
+
+            var collection = _sensorRepository.GetCollectionByName(sensor.Home);
+            bool result = _sensorRepository.Create(newSensor, collection);
 
             return result;
         }
 
-        public bool DeleteSensorByName(Sensor sensor)
+        public bool Update(Sensor sensor)
         {
-             
-            //delete sensor by home
-            return sensorRepository.Delete(sensor);
+            return _sensorRepository.Update(sensor);
         }
 
-        public List<Sensor> GetByHome(string home)
+        public bool DeleteSensor(Sensor sensor)
         {
-            List<Sensor> sensors = new List<Sensor>();
+            //delete sensor by home
+            return _sensorRepository.Delete(sensor);
+        }
 
+        public List<Sensor> GetSensorsByHome(string home)
+        {
             //get collection named {{home}}
-            var collection = sensorRepository.GetCollectionByName(home);
+            var collection = _sensorRepository.GetCollectionByName(home);
 
-            var result = sensorRepository.GetByHome(collection).ToList();
+            var result = _sensorRepository.GetSensorsByHome(collection).ToList();
 
+            //get documents from the collection
+            List<Sensor> list = new List<Sensor>();
             foreach (var document in result)
             {
-                Sensor sensor = new Sensor()
-                {
-                    _id = document["_id"].AsObjectId.ToString(),
-                    Name = document["Name"].AsString,
-                    Type = document["Type"].AsString,
-                    TargetApiLink = document["TargetApiLink"].AsString,
-                    Home = home
-                };
-                sensors.Add(sensor);
+                    list.Add(new Sensor()
+                    {
+                        _id = document["_id"].ToString(),
+                        Type = document["Type"].ToString(),
+                        TargetApiLink = document["TargetApiLink"].ToString(),
+                        Unit = document["Unit"].AsString, Home = home,
+                        IsActive = document["IsActive"].ToBoolean(),
+                        Name = document["Name"].ToString()
+                    });
             }
-            //get documents from the collection
-            return sensors;
+            return list;
+        }
+
+        public Sensor GetSensorBySensorId(Sensor sensor)
+        {
+            return null;
         }
     }
 }

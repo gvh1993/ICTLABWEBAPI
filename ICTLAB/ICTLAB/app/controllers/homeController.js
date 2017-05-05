@@ -4,7 +4,8 @@
         $scope.homes = {};
 
         $scope.removeHome = function (home) {
-            apiService.deleteHome(home.Name).then(
+            if ($window.confirm("Are you sure you want to delete: " + home.Name)) {
+                apiService.deleteHome(home.Name).then(
                 function successCallback(result) {
                     $scope.refreshHomes();
                 },
@@ -12,6 +13,7 @@
                     alert("unable to delete: " + home.Name);
                 }
             );
+            }
         };
 
         $scope.refreshHomes = function () {
@@ -36,6 +38,9 @@
             apiService.addHome($scope.home).then(
                 function successCallback(result) {
                     alert("Added new home: " + result.data);
+
+                    var url = "http://" + $window.location.host + "/Dashboard";
+                    $window.location.href = url;
                 },
                 function errorCallback(result) {
                     alert("failed to add new home");

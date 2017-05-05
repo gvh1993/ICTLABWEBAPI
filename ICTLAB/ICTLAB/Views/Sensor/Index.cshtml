@@ -11,13 +11,27 @@
 <div ng-app="app" ng-controller="sensorController" data-ng-init="refreshSensors()">
     <div class="col-md-10" ng-cloak>
         <table class="table up">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
             <tr ng-repeat="sensor in sensors track by $index">
-                <td class="col-md-10" ng-bind="sensor.Name"></td>
+                @{
+                    var url = Url.Action("Details", "Sensor", new { id = "{{id=sensor._id}}" });
+                    url = HttpUtility.UrlDecode(url);
+                }
+                <td><a data-ng-href="@url" ng-bind="sensor.Name"></a></td>
+                <td ng-bind="sensor.Type"></td>
                 <td ng-click="removeSensor(sensor)"><a href="" class="col-md-2 glyphicon glyphicon-remove"></a></td>
             </tr>
         </table>
     </div>
     <div class="col-md-2">
         @Html.ActionLink("Add Sensor", "Add", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Manage sensors", "Manage", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
+
     </div>
 </div>

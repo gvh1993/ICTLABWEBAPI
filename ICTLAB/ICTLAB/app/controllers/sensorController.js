@@ -3,6 +3,7 @@
         $scope.home = $window.home;
         //GET SENSOR LIST
         $scope.sensors = {};
+        
 
         $scope.removeSensor = function (sensor) {
             apiService.deleteSensor(sensor).then(
@@ -29,13 +30,13 @@
         };
 
 
-
         //ADD SENSOR
-        $scope.sensorTypes = ["Temperature", "Moist", "Light", "Humidity"];
         $scope.sensor = {
             name: "",
-            type: "Temperature",
+            type: "",
             targetApiLink: "",
+            unit: "",
+
             home: $scope.home
         }
 
@@ -46,11 +47,31 @@
                     $scope.sensor.name = "";
                     $scope.sensor.type = "";
                     $scope.sensor.targetApiLink = "";
+                    $scope.sensor.unit = "";
+
                     var url = "http://" + $window.location.host + "/sensor?id=" + $scope.home;
                     $window.location.href = url;
                 },
                 function errorCallback(result) {
                     alert("failed to add new sensor");
+                });
+        }
+
+        // MANAGE SENSORS
+        $scope.toggleSensor = function (sensor) {
+            if (sensor.IsActive) {
+                sensor.IsActive = false;
+
+            } else {
+                sensor.IsActive = true;
+            }
+            //call api service to update sensor
+            apiService.updateSensor(sensor).then(
+                function successCallback(result) {
+                    $scope.refreshSensors();
+                },
+                function errorCallback(result) {
+                    alert("Something went wrong with the updating of the sensor");
                 });
         }
     }]);

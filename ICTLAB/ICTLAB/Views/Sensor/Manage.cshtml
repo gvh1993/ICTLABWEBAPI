@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Manage";
+}
+<script>
+    var home = '@ViewBag.ID'
+</script>
+
+<h2>Manage</h2>
+
+<div ng-app="app" ng-controller="sensorController" data-ng-init="refreshSensors()">
+    <div class="col-md-10" ng-cloak>
+        <table class="table up">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>IsVisible</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="sensor in sensors track by $index">
+                <td ng-bind="sensor.Name"></td>
+                <td ng-bind="sensor.Type"></td>
+                <td >
+                    <i class="fa fa-3x fa-toggle-on active" ng-if="sensor.IsActive" ng-click="toggleSensor(sensor);"></i>
+                    <i class="fa fa-3x fa-toggle-on fa-rotate-180 inactive" ng-if="sensor.IsActive == false" ng-click="toggleSensor(sensor);"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
