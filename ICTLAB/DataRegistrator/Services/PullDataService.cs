@@ -18,7 +18,7 @@ namespace DataRegistrator.Services
             IScheduler sched = schedFact.GetScheduler();
             sched.Start();
 
-            //JOB2 + Trigger2
+            //JOB + Trigger
             IJobDetail fetchDataJob = JobBuilder.Create<PullDataJob>()
                 .WithIdentity("pullDataJob", "group1")
                 .Build();
@@ -27,7 +27,7 @@ namespace DataRegistrator.Services
              .WithIdentity("pullDataTrigger", "group1")
              .StartNow()
              .WithSimpleSchedule(x => x
-                 .WithIntervalInSeconds(120)//Should be 5 min
+                 .WithIntervalInMinutes(5)
                  .RepeatForever())
              .Build();
 
