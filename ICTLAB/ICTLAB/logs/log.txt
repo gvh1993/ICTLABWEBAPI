@@ -153,3 +153,41 @@ Parameter name: collection
    at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
    at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
    at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 73
+ERROR 2017-05-14 02:04:19,496 33572ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+MongoDB.Driver.MongoConnectionException: An exception occurred while sending a message to the server. ---> System.IO.IOException: Unable to write data to the transport connection: An operation was attempted on something that is not a socket. ---> System.Net.Sockets.SocketException: An operation was attempted on something that is not a socket
+   at System.Net.Sockets.Socket.Send(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at MongoDB.Driver.Core.Misc.StreamExtensionMethods.WriteBytes(Stream stream, IByteBuffer buffer, Int32 offset, Int32 count, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.SendBuffer(IByteBuffer buffer, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.Core.Connections.BinaryConnection.SendBuffer(IByteBuffer buffer, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.BinaryConnection.SendMessages(IEnumerable`1 messages, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.ConnectionPools.ExclusiveConnectionPool.AcquiredConnection.SendMessages(IEnumerable`1 messages, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Connections.ConnectionExtensions.SendMessage(IConnection connection, RequestMessage message, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.WireProtocol.CommandWireProtocol`1.Execute(IConnection connection, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.Server.ServerChannel.ExecuteProtocol[TResult](IWireProtocol`1 protocol, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Servers.Server.ServerChannel.Command[TResult](DatabaseNamespace databaseNamespace, BsonDocument command, IElementNameValidator commandValidator, Func`1 responseHandling, Boolean slaveOk, IBsonSerializer`1 resultSerializer, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.CommandOperationBase`1.ExecuteProtocol(IChannelHandle channel, ServerDescription serverDescription, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.CommandOperationBase`1.ExecuteProtocol(IChannelSource channelSource, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.ReadCommandOperation`1.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindCommandOperation`1.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.Core.Operations.FindOperation`1.Execute(IReadBinding binding, CancellationToken cancellationToken)
+   at MongoDB.Driver.OperationExecutor.ExecuteReadOperation[TResult](IReadBinding binding, IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperation[TResult](IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.ExecuteReadOperation[TResult](IReadOperation`1 operation, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.FindSync[TProjection](FilterDefinition`1 filter, FindOptions`2 options, CancellationToken cancellationToken)
+   at MongoDB.Driver.FindFluent`2.ToCursor(CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.ToList[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 93
+ERROR 2017-05-14 02:37:03,015 22241ms SensorRepository       etSensorBySensorId - Could not retrieve sensor by id
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 110
+ERROR 2017-05-14 02:39:13,261 21225ms SensorRepository       etSensorBySensorId - Could not retrieve sensor by id
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 110

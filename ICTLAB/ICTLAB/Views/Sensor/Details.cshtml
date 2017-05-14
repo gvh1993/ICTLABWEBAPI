@@ -2,6 +2,12 @@
 @{
     ViewBag.Title = "Details";
 }
+<script>
+    var sensorId = '@ViewBag.ID';
+</script>
 
 <h2>Details - @ViewBag.ID</h2>
 
+<div ng-app="app" ng-controller="sensorController" data-ng-init="getSensorById()">
+    
+</div>

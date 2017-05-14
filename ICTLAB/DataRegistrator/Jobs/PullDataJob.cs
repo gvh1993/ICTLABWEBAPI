@@ -38,7 +38,11 @@ namespace DataRegistrator.Jobs
                             var content = client.DownloadString(sensor.TargetApiLink);
                             //try to parse to Reading object
                             // Reading reading = content.Try
-                            Reading reading = new Reading();
+                            Reading reading = new Reading()
+                            {
+                                TimeStamp = DateTime.Now,
+                                Value = 24
+                            };
                             string result = JsonConvert.SerializeObject(reading);
 
                             var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(sensor._id));
@@ -75,6 +79,10 @@ namespace DataRegistrator.Jobs
             //iterate over the sensors per homeList of home objects
             foreach (var home in homes)
             {
+                if (home["name"] == "startup_log")
+                {
+                    continue;
+                }
                 Home newHome = new Home()
                 {
                     Name = home["name"].ToString()

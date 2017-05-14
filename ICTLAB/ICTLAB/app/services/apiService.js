@@ -73,6 +73,14 @@
             });
             return response;
         },
+        getSensorById: function(id) {
+            var response = $http({
+                url: "/api/Sensor/GetSensorBySensorId?id=" + id,
+                method: "GET",
+                headers: authHeaders
+            });
+            return response;
+        },
         register: function (userInfo) {
             var resp = $http({
                 url: "/api/Account/Register",

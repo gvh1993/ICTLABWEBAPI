@@ -11,7 +11,7 @@ namespace ICTLAB.Repositories
         bool Create(CreateSensor sensor, IMongoCollection<BsonDocument> collection);
         bool Delete(Sensor sensor);
         IMongoCollection<BsonDocument> GetCollectionByName(string sensorName);
-        BsonDocument GetSensorBySensorId(Sensor sensor);
+        BsonDocument GetSensorBySensorId(string id);
         List<BsonDocument> GetSensorsByType(CreateSensor sensor);
         bool Update(Sensor sensor);
     }

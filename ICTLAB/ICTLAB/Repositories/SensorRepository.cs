@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ICTLAB.Helpers;
 using MongoDB;
 using ICTLAB.MongoDB;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using ICTLAB.Models;
 using log4net;
+using log4net.Layout;
 
 namespace ICTLAB.Repositories
 {
@@ -88,7 +90,7 @@ namespace ICTLAB.Repositories
         {
             try
             {
-                var documents = home.Find(Builders<BsonDocument>.Filter.Empty).ToList();
+                var documents = home.Find(Builders<BsonDocument>.Filter.Empty).ToList() ?? new List<BsonDocument>();
                 return documents;
             }
             catch (Exception ex)
@@ -98,9 +100,22 @@ namespace ICTLAB.Repositories
             }
         }
 
-        public BsonDocument GetSensorBySensorId(Sensor sensor)
+        public BsonDocument GetSensorBySensorId(string id)
         {
-            return null;
+            try
+            {
+                //home/collection?
+                var collection = database.GetCollection<BsonDocument>(HomeHelper.home);
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id));
+                
+                var sensor = collection.Find(filter).ToList().FirstOrDefault() ?? new BsonDocument();
+                return sensor;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Could not retrieve sensor by id", ex);
+                return new BsonDocument();
+            }
         }
 
         public List<BsonDocument> GetSensorsByType(CreateSensor sensor )
@@ -108,7 +123,7 @@ namespace ICTLAB.Repositories
             try
             {
                 var home = database.GetCollection<BsonDocument>(sensor.Home);
-                var documents = home.Find(Builders<BsonDocument>.Filter.Eq("Type", sensor.Type)).ToList();
+                var documents = home.Find(Builders<BsonDocument>.Filter.Eq("Type", sensor.Type)).ToList() ?? new List<BsonDocument>();
 
                 return documents;
             }

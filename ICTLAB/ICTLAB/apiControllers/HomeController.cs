@@ -12,16 +12,16 @@ namespace ICTLAB.apiControllers
     [Authorize]
     public class HomeController : ApiController
     {
-        IHomeService homeService;
+        readonly IHomeService _homeService;
         public HomeController()
         {
-            homeService = new HomeService();
+            _homeService = new HomeService();
         }
 
         [HttpGet]
         public IHttpActionResult Get()
         {
-            List<Home> homes = homeService.GetAllHomes();
+            List<Home> homes = _homeService.GetAllHomes();
 
             return Ok(homes);
         }
@@ -29,7 +29,7 @@ namespace ICTLAB.apiControllers
         [HttpPut]
         public IHttpActionResult Create([FromBody]Home home)
         {
-            bool result = homeService.Create(home.Name);
+            bool result = _homeService.Create(home.Name);
             if (result)
             {
                 //get the name
@@ -44,7 +44,7 @@ namespace ICTLAB.apiControllers
         [HttpDelete]
         public IHttpActionResult Delete(string name)
         {
-            bool result = homeService.Delete(name);
+            bool result = _homeService.Delete(name);
             if (result)
             {
                 return Ok(result);

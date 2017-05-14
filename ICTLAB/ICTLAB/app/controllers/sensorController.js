@@ -4,7 +4,6 @@
         //GET SENSOR LIST
         $scope.sensors = {};
         
-
         $scope.removeSensor = function (sensor) {
             apiService.deleteSensor(sensor).then(
                 function successCallback(result) {
@@ -73,5 +72,19 @@
                 function errorCallback(result) {
                     alert("Something went wrong with the updating of the sensor");
                 });
+        }
+
+        //SENSOR DETAILS
+        $scope.sensorDetailModel = {};
+        $scope.sensorId = $window.sensorId;
+
+        $scope.getSensorById = function () {
+            apiService.getSensorById($scope.sensorId).then(
+            function successcallback(result) {
+                $scope.sensorDetailModel = result.data;
+            },
+            function errorCallback(result) {
+                var x = result;
+            });
         }
     }]);

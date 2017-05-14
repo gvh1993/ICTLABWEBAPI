@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MongoDB.Bson.Serialization;
 
 
 namespace ICTLAB.Services
@@ -72,9 +73,28 @@ namespace ICTLAB.Services
             return list;
         }
 
-        public Sensor GetSensorBySensorId(Sensor sensor)
+        public Sensor GetSensorBySensorId(string id)
         {
-            return null;
+            var sensorBson = _sensorRepository.GetSensorBySensorId(id);
+            //bsondocument to sensor;
+
+            Sensor sensor = new Sensor()
+            {
+                _id = sensorBson["_id"].ToString(),
+                Type = sensorBson["Type"].ToString(),
+                TargetApiLink = sensorBson["TargetApiLink"].ToString(),
+                Unit = sensorBson["Unit"].AsString,
+                IsActive = sensorBson["IsActive"].ToBoolean(),
+                Name = sensorBson["Name"].ToString(),
+            };
+            List<Reading> readings = (from reading in sensorBson["Readings"].AsBsonArray
+                where reading["TimeStamp"] >= DateTime.Now.AddMonths(-3) //should be refactored to repository and add it to query.. but due to lack of time.. i'm sorry!
+                select new Reading
+                {
+                    TimeStamp = reading["TimeStamp"].ToLocalTime(), Value = reading["Value"].ToDouble()
+                }).ToList();
+            sensor.Readings = readings;
+            return sensor;
         }
     }
 }
