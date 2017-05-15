@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ICTLAB.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

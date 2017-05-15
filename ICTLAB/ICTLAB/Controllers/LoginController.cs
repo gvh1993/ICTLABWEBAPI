@@ -39,6 +39,8 @@ namespace ICTLAB.Controllers
         public ActionResult LogOff()
         {
             //TODO logoff
+            var autheticationManager = HttpContext.GetOwinContext().Authentication;
+            autheticationManager.SignOut();
             return View();
         }
     }

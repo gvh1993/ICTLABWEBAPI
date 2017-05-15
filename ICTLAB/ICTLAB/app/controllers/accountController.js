@@ -84,15 +84,15 @@
                 window.location.href = '/Login/Login';
             },
             function errorCallback(result) {
-                var x = result
+                var x = result;
             });
     };
 
-    loading = function () {
-        if ($scope.loading) {
-            //rotate
-        }
-    }
+    //loading = function () {
+    //    if ($scope.loading) {
+    //        //rotate
+    //    }
+    //}
 
 
 }]);

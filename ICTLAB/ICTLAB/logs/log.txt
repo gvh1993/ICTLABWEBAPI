@@ -224,3 +224,16 @@ System.TimeoutException: A timeout occured after 30000ms selecting a server usin
    at MongoDB.Driver.MongoDatabaseImpl.ExecuteReadOperation[T](IReadOperation`1 operation, ReadPreference readPreference, CancellationToken cancellationToken)
    at MongoDB.Driver.MongoDatabaseImpl.ListCollections(ListCollectionsOptions options, CancellationToken cancellationToken)
    at ICTLAB.Repositories.HomeRepository.Get() in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\HomeRepository.cs:line 41
+ERROR 2017-05-15 17:05:34,751 831583ms SensorRepository       etCollectionByName - Could not get collection by name
+System.ArgumentNullException: Value cannot be null.
+Parameter name: name
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNullOrEmpty(String value, String paramName)
+   at MongoDB.Driver.MongoDatabaseImpl.GetCollection[TDocument](String name, MongoCollectionSettings settings)
+   at ICTLAB.Repositories.SensorRepository.GetCollectionByName(String sensorName) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 79
+ERROR 2017-05-15 17:05:34,805 831637ms SensorRepository       GetSensorsByHome   - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: collection
+   at MongoDB.Driver.Core.Misc.Ensure.IsNotNull[T](T value, String paramName)
+   at MongoDB.Driver.FindFluent`2..ctor(IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions`2 options)
+   at MongoDB.Driver.IMongoCollectionExtensions.Find[TDocument](IMongoCollection`1 collection, FilterDefinition`1 filter, FindOptions options)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsByHome(IMongoCollection`1 home) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 93
