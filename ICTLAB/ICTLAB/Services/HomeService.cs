@@ -11,28 +11,33 @@ namespace ICTLAB.Services
 {
     public class HomeService : IHomeService
     {
-        IHomeRepository homeRepository;
+        readonly IHomeRepository _homeRepository;
         public HomeService()
         {
-            homeRepository = new HomeRepository();
+            _homeRepository = new HomeRepository();
         }
 
         public bool Create(string name)
         {
-            return homeRepository.Create(name);
+            return _homeRepository.Create(name);
         }
 
         public bool Delete(string name)
         {
-            return homeRepository.Delete(name);
+            return _homeRepository.Delete(name);
         }
 
         public List<Home> GetAllHomes()
         {
             List<Home> homes = new List<Home>();
 
-            var collections = homeRepository.Get().ToList();
+            var results = _homeRepository.Get();
+            if (results == null)
+            {
+                return new List<Home>();
+            }
 
+            var collections = results.ToList();
             foreach (var collection in collections)
             {
                 Home home = new Home()

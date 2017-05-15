@@ -24,6 +24,9 @@ namespace ICTLAB
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/highcharts")
+                .Include("~/Scripts/highcharts.src.js"));
+
             bundles.Add(new StyleBundle("~/Content/css")
                 .IncludeDirectory("~/Content", "*.css", true));
         }

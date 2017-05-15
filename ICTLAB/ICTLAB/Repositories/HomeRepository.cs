@@ -6,6 +6,7 @@ using ICTLAB.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using log4net;
+using MongoDB.Driver.Core.Operations;
 
 namespace ICTLAB.Repositories
 {

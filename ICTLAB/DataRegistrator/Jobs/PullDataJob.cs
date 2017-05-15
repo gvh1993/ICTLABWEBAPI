@@ -23,9 +23,9 @@ namespace DataRegistrator.Jobs
         public void Execute(IJobExecutionContext context)
         {
             Console.WriteLine("PullDataJob is executing...");
-            List<Home> homeCollection = FetchHomeAndSensorData();
+            IEnumerable<Home> homeCollection = FetchHomeAndSensorData();
 
-            //TODO go through all targetapilinks and pull the data en put it properly in the mongodb database
+            // Go through all targetapilinks and pull the data en put it properly in the mongodb database
             foreach (var home in homeCollection)
             {
                 foreach (var sensor in home.Sensors)
@@ -35,15 +35,9 @@ namespace DataRegistrator.Jobs
                     {
                         using (WebClient client = new WebClient())
                         {
-                            var content = client.DownloadString(sensor.TargetApiLink);
-                            //try to parse to Reading object
-                            // Reading reading = content.Try
-                            Reading reading = new Reading()
-                            {
-                                TimeStamp = DateTime.Now,
-                                Value = 24
-                            };
-                            string result = JsonConvert.SerializeObject(reading);
+                            var content = client.DownloadString(sensor.TargetApiLink); //get data from targetapilink
+                            
+                            Reading reading = JsonConvert.DeserializeObject<Reading>(content); //try to parse to Reading object to make sure it is an reading object
 
                             var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(sensor._id));
                             var update = Builders<BsonDocument>.Update
@@ -69,7 +63,7 @@ namespace DataRegistrator.Jobs
             }
         }
 
-        private List<Home> FetchHomeAndSensorData()
+        private IEnumerable<Home> FetchHomeAndSensorData()
         {
             List<Home> homeCollection = new List<Home>();
             
