@@ -29,7 +29,10 @@ namespace ICTLAB.Services
                 TargetApiLink = sensor.TargetApiLink,
                 Type = sensor.Type.ToLower(),
                 Unit = sensor.Unit,
-                IsActive = true
+                IsActive = true,
+                Room = sensor.Room,
+                Floor = sensor.Floor,
+                ErrorMessage = ""
             };
 
             var collection = _sensorRepository.GetCollectionByName(sensor.Home);
@@ -67,7 +70,10 @@ namespace ICTLAB.Services
                         TargetApiLink = document["TargetApiLink"].ToString(),
                         Unit = document["Unit"].AsString, Home = home,
                         IsActive = document["IsActive"].ToBoolean(),
-                        Name = document["Name"].ToString()
+                        Name = document["Name"].ToString(),
+                        ErrorMessage = document["ErrorMessage"].ToString(),
+                        Floor = document["Floor"].ToInt32(),
+                        Room = document["Room"].ToString()
                     });
             }
             return list;
@@ -86,6 +92,9 @@ namespace ICTLAB.Services
                 Unit = sensorBson["Unit"].AsString,
                 IsActive = sensorBson["IsActive"].ToBoolean(),
                 Name = sensorBson["Name"].ToString(),
+                ErrorMessage = sensorBson["ErrorMessage"].ToString(),
+                Floor = sensorBson["Floor"].ToInt32(),
+                Room = sensorBson["Room"].ToString()
             };
             List<Reading> readings = (from reading in sensorBson["Readings"].AsBsonArray
                 where reading["TimeStamp"] >= DateTime.Now.AddMonths(-3) //should be refactored to repository and add it to query.. but due to lack of time.. i'm sorry!

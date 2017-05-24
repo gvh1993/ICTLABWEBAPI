@@ -1,4 +1,5 @@
-﻿
+﻿@using ICTLAB.Helpers
+
 @{
     ViewBag.Title = "Add";
 }
@@ -8,10 +9,19 @@
 
 <h2>Add</h2>
 <div ng-app="app" ng-controller="sensorController">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <div class="form-group">
             <label for="name">Name:</label>
-            <input id="name" class="form-control" type="text" ng-model="sensor.name" /><br />
+            <input id="name" class="form-control" type="text" ng-model="sensor.name"/><br/>
+
+            <label for="floor">Floor:</label>
+            <select id="floor" class="form-control" ng-model="sensor.floor" ng-options="item for item in floors" ng-click="changedFloor()" ></select><br/>
+
+            <label for="room">Room:</label>
+            <select id="room" class="form-control" ng-model="sensor.room" ng-options="item for item in floor0" ng-show="sensor.floor == 0"></select>
+            <select id="room" class="form-control" ng-model="sensor.room" ng-options="item for item in floor1" ng-show="sensor.floor == 1"></select>
+            <select id="room" class="form-control" ng-model="sensor.room" ng-options="item for item in floor2" ng-show="sensor.floor == 2"></select>
+            <br/>
 
             <label for="type">Sensor type:</label>
             @*<select id="type" class="form-control" ng-model="sensor.type" ng-options="item for item in sensorTypes"></select><br/>*@
@@ -23,10 +33,13 @@
             <br/>
 
             <label for="link">target api link:</label>
-            <input id="link" class="form-control" type="url" ng-model="sensor.targetApiLink" /><br />
-            <br />
+            <input id="link" class="form-control" type="url" ng-model="sensor.targetApiLink"/><br/>
+            <br/>
             <button class="btn btn-default" ng-click="addSensor()">Add Sensor</button>
         </div>
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Terug naar " + HomeHelper.home, "Index", "Sensor", new { id = HomeHelper.home }, new { @class = "btn btn-default" })
     </div>
 </div>
 

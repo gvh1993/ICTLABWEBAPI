@@ -1,4 +1,5 @@
-﻿
+﻿@using ICTLAB.Helpers
+
 @{
     ViewBag.Title = "Manage";
 }
@@ -12,21 +13,26 @@
     <div class="col-md-10" ng-cloak>
         <table class="table up">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>IsVisible</th>
-                </tr>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>ErrorMessage</th>
+                <th>IsVisible</th>
+            </tr>
             </thead>
             <tr ng-repeat="sensor in sensors track by $index">
                 <td ng-bind="sensor.Name"></td>
                 <td ng-bind="sensor.Type"></td>
+                <td ng-bind="sensor.ErrorMessage"></td>
                 <td >
                     <i class="fa fa-3x fa-toggle-on active" ng-if="sensor.IsActive" ng-click="toggleSensor(sensor);"></i>
                     <i class="fa fa-3x fa-toggle-on fa-rotate-180 inactive" ng-if="sensor.IsActive == false" ng-click="toggleSensor(sensor);"></i>
                 </td>
             </tr>
         </table>
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Terug naar " + HomeHelper.home, "Index", "Sensor", new { id = HomeHelper.home }, new { @class = "btn btn-default" })
     </div>
 </div>
 

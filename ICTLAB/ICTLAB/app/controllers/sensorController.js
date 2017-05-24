@@ -3,7 +3,7 @@
         $scope.home = $window.home;
         //GET SENSOR LIST
         $scope.sensors = {};
-        
+
         $scope.removeSensor = function (sensor) {
             apiService.deleteSensor(sensor).then(
                 function successCallback(result) {
@@ -30,30 +30,55 @@
 
 
         //ADD SENSOR
+        $scope.floors = [0, 1, 2];
+        $scope.floor0 = ["Hall", "Veranda", "room right"];
+        $scope.floor1 = ["left room", "right room"];
+        $scope.floor2 = ["roof terrace"];
+
         $scope.sensor = {
             name: "",
             type: "",
             targetApiLink: "",
             unit: "",
-
+            floor: 0,
+            room: "Hall",
             home: $scope.home
         }
 
+        $scope.changedFloor = function () {
+            switch ($scope.sensor.floor) {
+                case 0:
+                    $scope.sensor.room = $scope.floor0[0];
+                    break;
+                case 1:
+                    $scope.sensor.room = $scope.floor1[0];
+                    break;
+                case 2:
+                    $scope.sensor.room = $scope.floor2[0];
+                    break;
+                default:
+            }
+        }
         $scope.addSensor = function () {
-            apiService.addSensor($scope.sensor).then(
-                function successCallback(result) {
-                    alert("Added new sensor: " + result.data);
-                    $scope.sensor.name = "";
-                    $scope.sensor.type = "";
-                    $scope.sensor.targetApiLink = "";
-                    $scope.sensor.unit = "";
+            if ($scope.sensor.name !== "" && $scope.sensor.type !== "" && $scope.sensor.targetApiLink !== "" && $scope.sensor.unit !== "" && $scope.sensor.floor !== "" && $scope.sensor.room !== "") {
+                apiService.addSensor($scope.sensor).then(
+                    function successCallback(result) {
+                        alert("Added new sensor: " + result.data);
+                        $scope.sensor.name = "";
+                        $scope.sensor.type = "";
+                        $scope.sensor.targetApiLink = "";
+                        $scope.sensor.unit = "";
 
-                    var url = "http://" + $window.location.host + "/sensor?id=" + $scope.home;
-                    $window.location.href = url;
-                },
-                function errorCallback(result) {
-                    alert("failed to add new sensor");
-                });
+                        var url = "http://" + $window.location.host + "/sensor?id=" + $scope.home;
+                        $window.location.href = url;
+                    },
+                    function errorCallback(result) {
+                        alert("failed to add new sensor");
+                    });
+            } else {
+                alert("please fill in all fields");
+            }
+
         }
 
         // MANAGE SENSORS
