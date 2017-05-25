@@ -27,6 +27,11 @@ namespace ICTLAB
             bundles.Add(new ScriptBundle("~/bundles/highcharts")
                 .Include("~/Scripts/highcharts.src.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/threeJS")
+                .Include("~/Scripts/Three.js/Three.js")
+                .Include("~/Scripts/Three.js/ColladaLoader.js")
+                .Include("~/Scripts/Three.js/OBJLoader.js"));
+
             bundles.Add(new StyleBundle("~/Content/css")
                 .IncludeDirectory("~/Content", "*.css", true));
         }

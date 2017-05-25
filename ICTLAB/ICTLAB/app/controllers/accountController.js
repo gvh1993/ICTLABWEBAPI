@@ -88,11 +88,5 @@
             });
     };
 
-    //loading = function () {
-    //    if ($scope.loading) {
-    //        //rotate
-    //    }
-    //}
-
 
 }]);

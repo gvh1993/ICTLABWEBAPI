@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
 }
+@Scripts.Render("~/bundles/threeJS")
 <script>
     var home = '@ViewBag.ID'
 </script>
@@ -12,11 +13,11 @@
     <div class="col-md-10" ng-cloak>
         <table class="table up">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Remove</th>
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Remove</th>
+                </tr>
             </thead>
             <tr ng-repeat="sensor in sensors track by $index" ng-if="sensor.IsActive">
                 @{
@@ -31,8 +32,14 @@
     </div>
     <div class="col-md-2">
         @Html.ActionLink("Add Sensor", "Add", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
-        <br/>
-        <br/>
+        <br />
+        <br />
         @Html.ActionLink("Manage sensors", "Manage", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Home Visualisation</h2>
+            <script src="~/Scripts/Three.js/HomeVisualisation.js"></script>
+        </div>
     </div>
 </div>

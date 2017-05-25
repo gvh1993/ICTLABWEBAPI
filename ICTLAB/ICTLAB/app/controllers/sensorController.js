@@ -1,10 +1,10 @@
 ﻿angular.module("app").controller("sensorController", ["$scope", "$window", "apiService", "$location",
-    function ($scope, $window, apiService, $location) {
+    function($scope, $window, apiService, $location) {
         $scope.home = $window.home;
         //GET SENSOR LIST
         $scope.sensors = {};
 
-        $scope.removeSensor = function (sensor) {
+        $scope.removeSensor = function(sensor) {
             apiService.deleteSensor(sensor).then(
                 function successCallback(result) {
                     $scope.refreshSensors();
@@ -17,15 +17,15 @@
             );
         }
 
-        $scope.refreshSensors = function () {
+        $scope.refreshSensors = function() {
             apiService.getSensors($scope.home)
                 .then(
-                function successCallback(result) {
-                    $scope.sensors = result.data;
-                },
-                function errorCallback(result) {
-                    var x = result;
-                });
+                    function successCallback(result) {
+                        $scope.sensors = result.data;
+                    },
+                    function errorCallback(result) {
+                        var x = result;
+                    });
         };
 
 
@@ -45,21 +45,21 @@
             home: $scope.home
         }
 
-        $scope.changedFloor = function () {
+        $scope.changedFloor = function() {
             switch ($scope.sensor.floor) {
-                case 0:
-                    $scope.sensor.room = $scope.floor0[0];
-                    break;
-                case 1:
-                    $scope.sensor.room = $scope.floor1[0];
-                    break;
-                case 2:
-                    $scope.sensor.room = $scope.floor2[0];
-                    break;
-                default:
+            case 0:
+                $scope.sensor.room = $scope.floor0[0];
+                break;
+            case 1:
+                $scope.sensor.room = $scope.floor1[0];
+                break;
+            case 2:
+                $scope.sensor.room = $scope.floor2[0];
+                break;
+            default:
             }
         }
-        $scope.addSensor = function () {
+        $scope.addSensor = function() {
             if ($scope.sensor.name !== "" && $scope.sensor.type !== "" && $scope.sensor.targetApiLink !== "" && $scope.sensor.unit !== "" && $scope.sensor.floor !== "" && $scope.sensor.room !== "") {
                 apiService.addSensor($scope.sensor).then(
                     function successCallback(result) {
@@ -82,7 +82,7 @@
         }
 
         // MANAGE SENSORS
-        $scope.toggleSensor = function (sensor) {
+        $scope.toggleSensor = function(sensor) {
             if (sensor.IsActive) {
                 sensor.IsActive = false;
 
@@ -103,13 +103,16 @@
         $scope.sensorDetailModel = {};
         $scope.sensorId = $window.sensorId;
 
-        $scope.getSensorById = function () {
+        $scope.getSensorById = function() {
             apiService.getSensorById($scope.sensorId).then(
-            function successcallback(result) {
-                $scope.sensorDetailModel = result.data;
-            },
-            function errorCallback(result) {
-                var x = result;
-            });
+                function successcallback(result) {
+                    $scope.sensorDetailModel = result.data;
+                },
+                function errorCallback(result) {
+                    var x = result;
+                    alert(result.statusText);    
+                });
         }
+
+        
     }]);

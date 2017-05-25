@@ -5,20 +5,19 @@
             sensorDetailModel: '='
         },
         link: function (scope, element) {
-            scope.$watch('sensorDetailModel', function () {
+            scope.$watch('sensorDetailModel', function () {// to make sure the sensorDatailModel is filled by controller first!
                 var data = [];
                 angular.forEach(scope.sensorDetailModel.Readings, function(value, key) {
                     var dataPoint = [new Date(value.TimeStamp).getTime(), value.Value];
                     data.push(dataPoint);
                 });
-                data.push([new Date(Date.now()).getTime(), 30]);
 
                 Highcharts.chart(element[0], {
                     chart: {
                         zoomType: 'x'
                     },
                     title: {
-                        text: 'Metingen afgelopen 3 maanden',
+                        text: 'Measurements last 3 months',
                         dateTimeLabelFormats: { // don't display the dummy year
                             month: '%e. %b',
                             year: '%b'
@@ -81,7 +80,7 @@
                         data: data
                     }]
                 });
-            }); // to make sure the sensorDatailModel is filled by controller first!
+            }); 
 
 
             
