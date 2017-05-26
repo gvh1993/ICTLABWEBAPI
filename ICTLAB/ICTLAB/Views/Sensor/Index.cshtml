@@ -21,7 +21,7 @@
             </thead>
             <tr ng-repeat="sensor in sensors track by $index" ng-if="sensor.IsActive">
                 @{
-                    var url = Url.Action("Details", "Sensor", new { id = "{{id=sensor._id}}" });
+                    var url = Url.Action("Details", "Sensor", new { sensorId = "{{sensorId=sensor._id}}", id = ViewBag.Id });
                     url = HttpUtility.UrlDecode(url);
                 }
                 <td><a data-ng-href="@url" ng-bind="sensor.Name"></a></td>
@@ -39,7 +39,8 @@
     <div class="row">
         <div class="col-md-10">
             <h2>Home Visualisation</h2>
-            <script src="~/Scripts/Three.js/HomeVisualisation.js"></script>
+            @*<script src="~/Scripts/Three.js/HomeVisualisation.js"></script>*@
+            <script src=""></script>
         </div>
     </div>
 </div>

@@ -43,14 +43,50 @@ scene.add(cube);
 //});
 
 
-var loader = new THREE.OBJLoader(); 
-loader.load(
 
- 'https://github.com/gvh1993/daemodel/blob/master/CHIBBHouse.obj',
 
- function ( object ) {
-     scene.add( object );
- });
+//var loader = new THREE.OBJLoader(); 
+//loader.load(
+
+// '/api/model/chibbHouse',
+
+// function ( object ) {
+//     scene.add( object );
+// });
+
+
+//var loader = new THREE.FileLoader();
+//loader.load(
+//    // resource URL
+//    '/api/model/chibbHouse',
+
+//    // Function when resource is loaded
+//    function (data) {
+//        // output the text to the console
+//        //console.log(data);
+//        scene.add(data);
+//    },
+
+//    // Function called when download progresses
+//    function (xhr) {
+//       // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+//    },
+
+//    // Function called when download errors
+//    function (xhr) {
+//        console.error('An error happened');
+//    }
+//);
+
+loader = new THREE.JSONLoader();
+
+loader.load("/api/model/chibbHouse", function (geometry) {
+    var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+    mesh.scale.set(10, 10, 10);
+    mesh.position.y = 150;
+    mesh.position.x = 0;
+});
+
 
 requestAnimationFrame(render);
 function render() {

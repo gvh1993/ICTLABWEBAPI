@@ -45,7 +45,7 @@
             });
             return response;
         },
-        updateSensor: function(sensor) {
+        updateSensor: function (sensor) {
             var response = $http({
                 url: "/api/Sensor/UpdateSensor",
                 method: "Post",
@@ -75,9 +75,9 @@
             });
             return response;
         },
-        getSensorById: function(id) {
+        getSensorById: function (sensor) {
             var response = $http({
-                url: "/api/Sensor/GetSensorBySensorId?id=" + id,
+                url: "/api/Sensor/GetSensorBySensorId?id=" + sensor.id + "&home=" + sensor.home,
                 method: "GET",
                 headers: authHeaders
             });

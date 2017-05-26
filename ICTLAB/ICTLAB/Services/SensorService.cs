@@ -79,9 +79,9 @@ namespace ICTLAB.Services
             return list;
         }
 
-        public Sensor GetSensorBySensorId(string id)
+        public Sensor GetSensorBySensorId(string id, string home)
         {
-            var sensorBson = _sensorRepository.GetSensorBySensorId(id);
+            var sensorBson = _sensorRepository.GetSensorBySensorId(id, home);
             //bsondocument to sensor;
 
             Sensor sensor = new Sensor()

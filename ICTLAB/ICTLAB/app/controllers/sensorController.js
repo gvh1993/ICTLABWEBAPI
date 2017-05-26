@@ -102,9 +102,13 @@
         //SENSOR DETAILS
         $scope.sensorDetailModel = {};
         $scope.sensorId = $window.sensorId;
+        $scope.detailSensor = {
+            id: $window.sensorId,
+            home: $scope.home
+    };
 
         $scope.getSensorById = function() {
-            apiService.getSensorById($scope.sensorId).then(
+            apiService.getSensorById($scope.detailSensor).then(
                 function successcallback(result) {
                     $scope.sensorDetailModel = result.data;
                 },
@@ -113,6 +117,4 @@
                     alert(result.statusText);    
                 });
         }
-
-        
     }]);

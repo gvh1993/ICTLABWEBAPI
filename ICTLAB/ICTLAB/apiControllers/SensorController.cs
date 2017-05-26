@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using ICTLAB.Helpers;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
@@ -29,9 +28,6 @@ namespace ICTLAB.ApiControllers
         [HttpGet]
         public IHttpActionResult Get(string home)
         {
-            //set the home helper to the chosen home so this variable is accessable throughout the application
-            HomeHelper.home = home;
-
             //give list of all sensors
             var result = _sensorService.GetSensorsByHome(home);
 
@@ -80,11 +76,11 @@ namespace ICTLAB.ApiControllers
 
         [Route("GetSensorBySensorId")]
         [HttpGet]
-        public IHttpActionResult GetSensorBySensorId([FromUri] string id)
+        public IHttpActionResult GetSensorBySensorId([FromUri] string id, string home)
         {
-            var sensor = _sensorService.GetSensorBySensorId(id);
+            var s = _sensorService.GetSensorBySensorId(id, home);
             
-            return Ok(sensor);
+            return Ok(s);
         }
     }
 }

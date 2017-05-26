@@ -290,3 +290,15 @@ ERROR 2017-05-25 14:50:07,957 74111214ms SensorRepository       etSensorBySensor
 System.FormatException: 'undefined' is not a valid 24 digit hex string.
    at MongoDB.Bson.ObjectId.Parse(String s)
    at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 109
+ERROR 2017-05-26 01:55:49,296 51575ms SensorRepository       etSensorBySensorId - Could not retrieve sensor by id
+System.FormatException: '' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 109
+ERROR 2017-05-26 01:56:25,020 87298ms SensorRepository       etSensorBySensorId - Could not retrieve sensor by id
+System.FormatException: '' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 109
+ERROR 2017-05-26 01:59:41,930 80289ms SensorRepository       etSensorBySensorId - Could not retrieve sensor by id
+System.FormatException: '' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 109

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ICTLAB.Helpers;
 using MongoDB;
 using ICTLAB.MongoDB;
 using MongoDB.Bson;
@@ -100,12 +99,12 @@ namespace ICTLAB.Repositories
             }
         }
 
-        public BsonDocument GetSensorBySensorId(string id)
+        public BsonDocument GetSensorBySensorId(string id, string home)
         {
             try
             {
                 //home/collection?
-                var collection = database.GetCollection<BsonDocument>(HomeHelper.home);
+                var collection = database.GetCollection<BsonDocument>(home);
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id));
                 
                 var sensor = collection.Find(filter).ToList().FirstOrDefault() ?? new BsonDocument();

@@ -23,9 +23,10 @@ namespace ICTLAB.Controllers
             return View();
         }
 
-        public ActionResult Details(string id)
+        public ActionResult Details(string id, string sensorId)
         {
             ViewBag.ID = id;
+            ViewBag.SensorId = sensorId;
             return View();
         }
 
