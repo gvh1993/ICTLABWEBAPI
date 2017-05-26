@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Index";
 }
-@Scripts.Render("~/bundles/threeJS")
 <script>
     var home = '@ViewBag.ID'
 </script>
@@ -35,12 +34,9 @@
         <br />
         <br />
         @Html.ActionLink("Manage sensors", "Manage", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
+        <br/>
+        <br/>
+        @Html.ActionLink("Visualisations", "Visualisations", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
     </div>
-    <div class="row">
-        <div class="col-md-10">
-            <h2>Home Visualisation</h2>
-            @*<script src="~/Scripts/Three.js/HomeVisualisation.js"></script>*@
-            <script src=""></script>
-        </div>
-    </div>
+
 </div>
