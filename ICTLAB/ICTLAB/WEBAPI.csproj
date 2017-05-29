@@ -371,6 +371,19 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Unity\Build\UnityLoader.js" />
+    <Content Include="Scripts\Unity\index.html" />
+    <Content Include="Scripts\Unity\TemplateData\favicon.ico" />
+    <Content Include="Scripts\Unity\TemplateData\fullscreen.png" />
+    <Content Include="Scripts\Unity\TemplateData\progressEmpty.Dark.png" />
+    <Content Include="Scripts\Unity\TemplateData\progressEmpty.Light.png" />
+    <Content Include="Scripts\Unity\TemplateData\progressFull.Dark.png" />
+    <Content Include="Scripts\Unity\TemplateData\progressFull.Light.png" />
+    <Content Include="Scripts\Unity\TemplateData\progressLogo.Dark.png" />
+    <Content Include="Scripts\Unity\TemplateData\progressLogo.Light.png" />
+    <Content Include="Scripts\Unity\TemplateData\style.css" />
+    <Content Include="Scripts\Unity\TemplateData\UnityProgress.js" />
+    <Content Include="Scripts\Unity\TemplateData\webgl-logo.png" />
     <Content Include="Views\401Unauthorized.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -410,6 +423,11 @@
     <Content Include="Views\Sensor\Details.cshtml" />
     <Content Include="Views\Sensor\Manage.cshtml" />
     <Content Include="Views\Sensor\Visualisations.cshtml" />
+    <Content Include="Scripts\Unity\Build\Unity Projects.asm.code.unityweb" />
+    <Content Include="Scripts\Unity\Build\Unity Projects.asm.framework.unityweb" />
+    <Content Include="Scripts\Unity\Build\Unity Projects.asm.memory.unityweb" />
+    <Content Include="Scripts\Unity\Build\Unity Projects.data.unityweb" />
+    <Content Include="Scripts\Unity\Build\Unity Projects.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
