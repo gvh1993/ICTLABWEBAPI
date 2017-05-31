@@ -7,8 +7,6 @@
         link: function (scope, element) {
             var sensorCollection = {};
             var chartCount = 0;
-            //TODO add children to element
-            
 
             function plotData(sensor1, sensor2, filteredData) {
                 var target = 'element' + chartCount;
@@ -17,7 +15,8 @@
                         renderTo: target,
                         type: 'scatter',
                         zoomType: 'xy',
-                        width: '200'
+                        width: '200',
+                        height: '200'
                     },
                     title: {
                         text: '',
