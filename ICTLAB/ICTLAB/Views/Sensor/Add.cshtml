@@ -1,6 +1,4 @@
-﻿@using ICTLAB.Helpers
-
-@{
+﻿@{
     ViewBag.Title = "Add";
 }
 <script>
@@ -39,7 +37,7 @@
         </div>
     </div>
     <div class="col-md-2">
-        @Html.ActionLink("Terug naar " + HomeHelper.home, "Index", "Sensor", new { id = HomeHelper.home }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Terug naar home", "Index", "Sensor", new { id = ViewBag.ID }, new { @class = "btn btn-default" })
     </div>
 </div>
 

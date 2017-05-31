@@ -7,15 +7,20 @@
         link: function (scope, element) {
             var sensorCollection = {};
             var chartCount = 0;
+            //TODO add children to element
+            
 
             function plotData(sensor1, sensor2, filteredData) {
-                Highcharts.chart(element[chartCount], {
+                var target = 'element' + chartCount;
+                Highcharts.chart({
                     chart: {
-                        type:'scatter',
-                        zoomType: 'xy'
+                        renderTo: target,
+                        type: 'scatter',
+                        zoomType: 'xy',
+                        width: '200'
                     },
                     title: {
-                        text: 'Measurements last 3 months',
+                        text: '',
                         dateTimeLabelFormats: {
                             // don't display the dummy year
                             month: '%e. %b',
@@ -26,7 +31,6 @@
                         }
                     },
                     xAxis: {
-                        type: 'datetime',
                         title: {
                             text: sensor2.Name
                         }
@@ -67,7 +71,7 @@
                     series: [
                         {
                             //name: 'sensordata',
-                            type: 'area',
+                            //type: 'area',
                             data: filteredData
                         }
                     ]
@@ -78,7 +82,8 @@
                 var data = [];
 
                 //loop over every sensorreading and check with other sensor reading if time is the same
-                angular.forEach(sensor1.Readings, function(sensor1Reading ) {
+                angular.forEach(sensor1.Readings, function (sensor1Reading) {
+
                     angular.forEach(sensor2.Readings, function (sensor2Reading) {
                         //convert to string till minute accurate
                         var sensor1DateTime = $filter('date')(sensor1Reading.TimeStamp, "yyyy-MM-dd HH:mm");
@@ -98,6 +103,8 @@
             function getData() {
                 angular.forEach(sensorCollection, function (sensor1, key) {
                     angular.forEach(sensorCollection, function (sensor2, key) {
+                        var target = 'element' + chartCount;
+                        element.append("<div id=" + target +" style='float: left'></div>");
                         //get data from sensor
                         var x = sensor1.Readings;
                         //get data from other sensor
