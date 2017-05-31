@@ -18,7 +18,7 @@
         }
 
         $scope.refreshSensors = function() {
-            apiService.getSensors($scope.home)
+            apiService.getSensorsWithoutReadings($scope.home)
                 .then(
                     function successCallback(result) {
                         $scope.sensors = result.data;

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MongoDB.Bson.Serialization;
+using Newtonsoft.Json;
 
 
 namespace ICTLAB.Services
@@ -63,18 +64,58 @@ namespace ICTLAB.Services
             List<Sensor> list = new List<Sensor>();
             foreach (var document in result)
             {
-                    list.Add(new Sensor()
+                Sensor sensor = new Sensor()
+                {
+                    _id = document["_id"].ToString(),
+                    Type = document["Type"].ToString(),
+                    TargetApiLink = document["TargetApiLink"].ToString(),
+                    Unit = document["Unit"].AsString,
+                    Home = home,
+                    IsActive = document["IsActive"].ToBoolean(),
+                    Name = document["Name"].ToString(),
+                    ErrorMessage = document["ErrorMessage"].ToString(),
+                    Floor = document["Floor"].ToInt32(),
+                    Room = document["Room"].ToString(),
+                };
+                List<Reading> readings = new List<Reading>();
+                foreach (var reading in document["Readings"].AsBsonArray)
+                {
+                    readings.Add(new Reading
                     {
-                        _id = document["_id"].ToString(),
-                        Type = document["Type"].ToString(),
-                        TargetApiLink = document["TargetApiLink"].ToString(),
-                        Unit = document["Unit"].AsString, Home = home,
-                        IsActive = document["IsActive"].ToBoolean(),
-                        Name = document["Name"].ToString(),
-                        ErrorMessage = document["ErrorMessage"].ToString(),
-                        Floor = document["Floor"].ToInt32(),
-                        Room = document["Room"].ToString()
+                        TimeStamp = reading["TimeStamp"].ToUniversalTime(),
+                        Value = reading["Value"].ToDouble()
                     });
+                }
+                sensor.Readings = readings;
+                list.Add(sensor);
+            }
+            return list;
+        }
+
+        public List<Sensor> GetSensorsWithoutReadingsByHome(string home)
+        {
+            //get collection named {{home}}
+            var collection = _sensorRepository.GetCollectionByName(home);
+
+            var result = _sensorRepository.GetSensorsByHome(collection).ToList();
+
+            //get documents from the collection
+            List<Sensor> list = new List<Sensor>();
+            foreach (var document in result)
+            {
+                list.Add(new Sensor()
+                {
+                    _id = document["_id"].ToString(),
+                    Type = document["Type"].ToString(),
+                    TargetApiLink = document["TargetApiLink"].ToString(),
+                    Unit = document["Unit"].AsString,
+                    Home = home,
+                    IsActive = document["IsActive"].ToBoolean(),
+                    Name = document["Name"].ToString(),
+                    ErrorMessage = document["ErrorMessage"].ToString(),
+                    Floor = document["Floor"].ToInt32(),
+                    Room = document["Room"].ToString()
+                });
             }
             return list;
         }
@@ -97,11 +138,12 @@ namespace ICTLAB.Services
                 Room = sensorBson["Room"].ToString()
             };
             List<Reading> readings = (from reading in sensorBson["Readings"].AsBsonArray
-                where reading["TimeStamp"] >= DateTime.Now.AddMonths(-3) //should be refactored to repository and add it to query.. but due to lack of time.. i'm sorry!
-                select new Reading
-                {
-                    TimeStamp = reading["TimeStamp"].ToLocalTime(), Value = reading["Value"].ToDouble()
-                }).ToList();
+                                      where reading["TimeStamp"] >= DateTime.Now.AddMonths(-3) //should be refactored to repository and add it to query.. but due to lack of time.. i'm sorry!
+                                      select new Reading
+                                      {
+                                          TimeStamp = reading["TimeStamp"].ToLocalTime(),
+                                          Value = reading["Value"].ToDouble()
+                                      }).ToList();
             sensor.Readings = readings;
             return sensor;
         }

@@ -1,85 +1,133 @@
-﻿angular.module('app').directive('sensorCorrelationChart', ["apiService", function (apiService) {
+﻿angular.module('app').directive('sensorCorrelationChart', ["apiService", "$filter", function (apiService, $filter) {
     return {
         restrict: 'E',
         scope: {
-            home : '='
+            home: '@'
         },
         link: function (scope, element) {
+            var sensorCollection = {};
+            var chartCount = 0;
 
-
-            var data = [];
-
-            Highcharts.chart(element[0], {
-                chart: {
-                    zoomType: 'x'
-                },
-                title: {
-                    text: 'Measurements last 3 months',
-                    dateTimeLabelFormats: {
-// don't display the dummy year
-                        month: '%e. %b',
-                        year: '%b'
+            function plotData(sensor1, sensor2, filteredData) {
+                Highcharts.chart(element[chartCount], {
+                    chart: {
+                        type:'scatter',
+                        zoomType: 'xy'
                     },
                     title: {
-                        text: 'Datum / tijd'
-                    }
-                },
-                xAxis: {
-                    type: 'datetime',
-                    title: {
-                        text: 'Datum / tijd'
-                    }
+                        text: 'Measurements last 3 months',
+                        dateTimeLabelFormats: {
+                            // don't display the dummy year
+                            month: '%e. %b',
+                            year: '%b'
+                        },
+                        title: {
+                            text: 'Datum / tijd'
+                        }
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        title: {
+                            text: sensor2.Name
+                        }
 
-                },
-                yAxis: {
-                    title: {
-                        text: scope.sensorDetailModel.Type
-                    }
-                },
-                //plotOptions: {
-                //    spline: {
-                //        marker: {
-                //            enabled: true
-                //        }
-                //    }
-                //},
-                plotOptions: {
-                    area: {
-                        fillColor: {
-                            linearGradient: {
-                                x1: 0,
-                                y1: 0,
-                                x2: 0,
-                                y2: 1
+                    },
+                    yAxis: {
+                        title: {
+                            text: sensor1.Name
+                        }
+                    },
+                    plotOptions: {
+                        scatter: {
+                            marker: {
+                                radius: 5,
+                                states: {
+                                    hover: {
+                                        enabled: true,
+                                        lineColor: 'rgb(100,100,100)'
+                                    }
+                                }
                             },
-                            stops: [
-                                [0, Highcharts.getOptions().colors[0]],
-                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                            ]
-                        },
-                        marker: {
-                            radius: 2
-                        },
-                        lineWidth: 1,
-                        states: {
-                            hover: {
-                                lineWidth: 1
+                            states: {
+                                hover: {
+                                    marker: {
+                                        enabled: false
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                headerFormat: '<b>{series.name}</b><br>',
+                                pointFormat: '{point.x} cm, {point.y} kg'
                             }
-                        },
-                        threshold: null
-                    }
-                },
-                legend: {
-                    enabled: false
-                },
-                series: [
-                    {
-                        //name: 'sensordata',
-                        type: 'area',
-                        data: data
-                    }
-                ]
-            });
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    series: [
+                        {
+                            //name: 'sensordata',
+                            type: 'area',
+                            data: filteredData
+                        }
+                    ]
+                });
+            }
+
+            function filterData(sensor1, sensor2) {
+                var data = [];
+
+                //loop over every sensorreading and check with other sensor reading if time is the same
+                angular.forEach(sensor1.Readings, function(sensor1Reading ) {
+                    angular.forEach(sensor2.Readings, function (sensor2Reading) {
+                        //convert to string till minute accurate
+                        var sensor1DateTime = $filter('date')(sensor1Reading.TimeStamp, "yyyy-MM-dd HH:mm");
+                        var sensor2DateTime = $filter('date')(sensor2Reading.TimeStamp, "yyyy-MM-dd HH:mm");
+
+                        if (sensor1DateTime == sensor2DateTime) {
+                            //add data point to array because they have same datetime
+                            //format: [sensor1Value, sensor2Value]
+                            data.push([sensor1Reading.Value, sensor2Reading.Value]);
+                        }
+                    });
+                });
+
+                return data;
+            }
+
+            function getData() {
+                angular.forEach(sensorCollection, function (sensor1, key) {
+                    angular.forEach(sensorCollection, function (sensor2, key) {
+                        //get data from sensor
+                        var x = sensor1.Readings;
+                        //get data from other sensor
+                        var y = sensor2.Readings;
+                        //plot both datasets in highcharts scatterplot
+                        var filteredData = filterData(sensor1, sensor2);
+                        plotData(sensor1, sensor2, filteredData);
+                        chartCount++;
+                    });
+                });
+            }
+
+            //get the data
+                apiService.getSensors(scope.home).then(
+                    function successCallback(result) {
+                        sensorCollection = result.data;
+                        getData();
+                    },
+                    function errorCallback(result) {
+                        var x = result;
+                    });
+                
+            
+            
+                //double foreach and draw the correlation between i and j
+            
+
+                //var data = [];
+
+                
         }
     }
 }]);

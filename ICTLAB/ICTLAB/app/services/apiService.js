@@ -66,10 +66,16 @@
             return response;
         },
         getSensors: function (home) {
-            sessionStorage.setItem('currentHome', home); // set it for unity visualisation
-
             var response = $http({
                 url: "/api/Sensor/Get?home=" + home,
+                method: "GET",
+                headers: authHeaders
+            });
+            return response;
+        },
+        getSensorsWithoutReadings: function (home) {
+            var response = $http({
+                url: "/api/Sensor/GetSensorsWithoutReadings?home=" + home,
                 method: "GET",
                 headers: authHeaders
             });
