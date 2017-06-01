@@ -16,11 +16,13 @@ using Microsoft.Owin.Security.OAuth;
 using ICTLAB.Models;
 using ICTLAB.Providers;
 using ICTLAB.Results;
+using System.Web.Http.Cors;
 
 namespace ICTLAB.ApiControllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
