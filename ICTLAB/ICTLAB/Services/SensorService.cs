@@ -53,12 +53,12 @@ namespace ICTLAB.Services
             return _sensorRepository.Delete(sensor);
         }
 
-        public List<Sensor> GetSensorsByHome(string home)
+        public List<Sensor> GetSensorsWithoutCurrent(Sensor currentSensor)
         {
             //get collection named {{home}}
-            var collection = _sensorRepository.GetCollectionByName(home);
+            var collection = _sensorRepository.GetCollectionByName(currentSensor.Home);
 
-            var result = _sensorRepository.GetSensorsByHome(collection).ToList();
+            var result = _sensorRepository.GetSensorsWithoutCurrent(collection, currentSensor).ToList();
 
             //get documents from the collection
             List<Sensor> list = new List<Sensor>();
@@ -70,7 +70,7 @@ namespace ICTLAB.Services
                     Type = document["Type"].ToString(),
                     TargetApiLink = document["TargetApiLink"].ToString(),
                     Unit = document["Unit"].AsString,
-                    Home = home,
+                    Home = currentSensor.Home,
                     IsActive = document["IsActive"].ToBoolean(),
                     Name = document["Name"].ToString(),
                     ErrorMessage = document["ErrorMessage"].ToString(),

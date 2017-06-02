@@ -65,11 +65,12 @@
             });
             return response;
         },
-        getSensors: function (home) {
+        getSensorsWithoutCurrent: function (sensor) {
             var response = $http({
-                url: "/api/Sensor/Get?home=" + home,
-                method: "GET",
-                headers: authHeaders
+                url: "/api/Sensor/GetSensorsWithoutCurrent",
+                method: "POST",
+                headers: authHeaders,
+                data: sensor
             });
             return response;
         },

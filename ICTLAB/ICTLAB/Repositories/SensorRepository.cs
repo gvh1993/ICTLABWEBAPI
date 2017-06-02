@@ -99,6 +99,21 @@ namespace ICTLAB.Repositories
             }
         }
 
+        public List<BsonDocument> GetSensorsWithoutCurrent(IMongoCollection<BsonDocument> home, Sensor sensor)
+        {
+            try
+            {
+                var filter = Builders<BsonDocument>.Filter.Ne("_id", ObjectId.Parse(sensor._id));
+                var documents = home.Find(filter).ToList() ?? new List<BsonDocument>();
+                return documents;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Could not retrieve sensor by home", ex);
+                return new List<BsonDocument>();
+            }
+        }
+
         public BsonDocument GetSensorBySensorId(string id, string home)
         {
             try

@@ -430,7 +430,6 @@
     <Content Include="Views\Sensor\Index.cshtml" />
     <Content Include="Views\Sensor\Details.cshtml" />
     <Content Include="Views\Sensor\Manage.cshtml" />
-    <Content Include="Views\Sensor\Visualisations.cshtml" />
     <Content Include="Scripts\Unity\Build\Unity Projects.asm.code.unityweb" />
     <Content Include="Scripts\Unity\Build\Unity Projects.asm.framework.unityweb" />
     <Content Include="Scripts\Unity\Build\Unity Projects.asm.memory.unityweb" />

@@ -302,3 +302,23 @@ ERROR 2017-05-26 01:59:41,930 80289ms SensorRepository       etSensorBySensorId 
 System.FormatException: '' is not a valid 24 digit hex string.
    at MongoDB.Bson.ObjectId.Parse(String s)
    at ICTLAB.Repositories.SensorRepository.GetSensorBySensorId(String id) in F:\ICTLAB\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 109
+ERROR 2017-06-02 12:04:03,149 27076ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 106
+ERROR 2017-06-02 12:06:27,946 39987ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 106
+ERROR 2017-06-02 12:07:28,616 100658ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 106
+ERROR 2017-06-02 12:07:42,484 114526ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 106

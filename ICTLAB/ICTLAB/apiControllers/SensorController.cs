@@ -25,11 +25,12 @@ namespace ICTLAB.ApiControllers
             _sensorService = new SensorService();
         }
 
-        [HttpGet]
-        public IHttpActionResult Get(string home)
+        [Route("GetSensorsWithoutCurrent")]
+        [HttpPost]
+        public IHttpActionResult GetSensorsWithoutCurrent([FromBody] Sensor sensor)
         {
             // TODO give list of all sensors --> WITH DATA
-            var result = _sensorService.GetSensorsByHome(home);
+            var result = _sensorService.GetSensorsWithoutCurrent(sensor);
 
             return Ok(result);
         }

@@ -49,8 +49,13 @@
             <counter-directive sensor-detail-model="sensorDetailModel"></counter-directive>
         </div>
         <div class="col-md-2">
-            
+
         </div>
     </div>
-    
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Correlations with other sensors</h2>
+            <sensor-correlation-chart sensor-detail-model="sensorDetailModel" home=@ViewBag.ID></sensor-correlation-chart>
+        </div>
+    </div>
 </div>

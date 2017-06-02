@@ -35,11 +35,5 @@ namespace ICTLAB.Controllers
             ViewBag.ID = id;
             return View();
         }
-
-        public ActionResult Visualisations(string id)
-        {
-            ViewBag.ID = id;
-            return View();
-        }
     }
 }
