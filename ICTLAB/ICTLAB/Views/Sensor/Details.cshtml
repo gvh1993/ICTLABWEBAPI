@@ -38,6 +38,9 @@
         </div>
         <div class="col-md-2">
             @Html.ActionLink("Terug naar home" , "Index", "Sensor", new {id = ViewBag.ID}, new {@class = "btn btn-default"})
+            <br/>
+            <br/>
+            @Html.ActionLink("Update Sensor", "Update", "Sensor", new { id = ViewBag.ID, sensorId = ViewBag.SensorId }, new { @class = "btn btn-default" })
         </div>
     </div>
 

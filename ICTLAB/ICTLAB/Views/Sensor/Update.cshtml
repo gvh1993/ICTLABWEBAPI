@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+}
+<script>
+    var sensorId = '@ViewBag.SensorId';
+    var home = '@ViewBag.ID';
+</script>
+
+<div ng-app="app" ng-controller="sensorController" data-ng-init="getSensorById()">
+    <h2>@ViewBag.ID</h2>
+    <h2>Update - {{sensorDetailModel.Name}}</h2>
+
+    <div class="col-md-10">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" class="form-control" type="text" ng-model="sensorDetailModel.Name" /><br />
+
+            <label for="floor">Floor:</label>
+            <select id="floor" class="form-control" ng-model="sensorDetailModel.Floor" ng-options="item for item in floors" ng-click="changedFloor()"></select><br/>
+
+            <label for="room">Room:</label>
+            <select id="room" class="form-control" ng-model="sensorDetailModel.Room" ng-options="item for item in floor0" ng-show="sensor.floor == 0"></select>
+            <select id="room" class="form-control" ng-model="sensorDetailModel.Room" ng-options="item for item in floor1" ng-show="sensor.floor == 1"></select>
+            <select id="room" class="form-control" ng-model="sensorDetailModel.Room" ng-options="item for item in floor2" ng-show="sensor.floor == 2"></select>
+            <br />
+
+            <label for="type">Sensor type:</label>
+            @*<select id="type" class="form-control" ng-model="sensor.type" ng-options="item for item in sensorTypes"></select><br/>*@
+            <input id="type" class="form-control" type="text" ng-model="sensorDetailModel.Type" /><br />
+            <br />
+
+            <label for="unit">Unit:</label>
+            <input id="unit" class="form-control" type="text" ng-model="sensorDetailModel.Unit"><br />
+            <br />
+
+            <label for="link">target api link:</label>
+            <input id="link" class="form-control" type="url" ng-model="sensorDetailModel.TargetApiLink" /><br />
+            <br/>
+
+            <label for="errorMessage">ErrorMessage:</label>
+            <input id="errorMessage" class="form-control" type="text" ng-model="sensorDetailModel.ErrorMessage" /><br />
+            <br />
+
+            <button class="btn btn-default" ng-click="updateSensor()">Update Sensor</button>
+        </div>
+    </div>
+</div>
+
+

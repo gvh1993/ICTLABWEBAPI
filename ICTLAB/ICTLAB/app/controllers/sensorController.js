@@ -117,4 +117,15 @@
                     alert(result.statusText);    
                 });
         }
+
+        // UPDATE SENSOR
+        $scope.updateSensor = function() {
+            apiService.updateSensor($scope.sensorDetailModel).then(
+                function successCallback(result) {
+                
+            },
+            function errorCallback(result) {
+                alert("There was an error while updating " + $scope.sensorDetailModel.Name);
+            });
+        }
     }]);

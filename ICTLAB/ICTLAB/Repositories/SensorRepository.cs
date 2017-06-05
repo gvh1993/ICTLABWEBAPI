@@ -43,13 +43,21 @@ namespace ICTLAB.Repositories
                 var collection = database.GetCollection<BsonDocument>(sensor.Home);
 
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(sensor._id));
-                var update = Builders<BsonDocument>.Update.Set("IsActive", sensor.IsActive);
+                var update = Builders<BsonDocument>.Update
+                    .Set("IsActive", sensor.IsActive)
+                    .Set("ErrorMessage", sensor.ErrorMessage)
+                    .Set("Name", sensor.Name)
+                    .Set("Type", sensor.Type)
+                    .Set("TargetApiLink", sensor.TargetApiLink)
+                    .Set("Unit", sensor.Unit)
+                    .Set("Room", sensor.Room)
+                    .Set("Floor", sensor.Floor);
                 collection.UpdateOne(filter, update);
                 return true;
             }
             catch (Exception ex)
             {
-                _logger.Error("Could not update IsActive", ex);
+                _logger.Error("Could not update " + sensor._id, ex);
                 return false;
             }
         }

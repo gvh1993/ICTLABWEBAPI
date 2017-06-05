@@ -133,6 +133,7 @@ namespace ICTLAB.Services
                 Unit = sensorBson["Unit"].AsString,
                 IsActive = sensorBson["IsActive"].ToBoolean(),
                 Name = sensorBson["Name"].ToString(),
+                Home = sensorBson["Home"].ToString(),
                 ErrorMessage = sensorBson["ErrorMessage"].ToString(),
                 Floor = sensorBson["Floor"].ToInt32(),
                 Room = sensorBson["Room"].ToString()

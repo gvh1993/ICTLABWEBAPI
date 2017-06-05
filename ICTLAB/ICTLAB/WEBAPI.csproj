@@ -435,6 +435,7 @@
     <Content Include="Scripts\Unity\Build\Unity Projects.asm.memory.unityweb" />
     <Content Include="Scripts\Unity\Build\Unity Projects.data.unityweb" />
     <Content Include="Scripts\Unity\Build\Unity Projects.json" />
+    <Content Include="Views\Sensor\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
