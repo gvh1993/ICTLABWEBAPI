@@ -43,6 +43,14 @@ namespace DataRegistrator.Jobs
                             var update = Builders<BsonDocument>.Update
                                 .Push("Readings", reading.ToBsonDocument());
                             _mongoDB.database.GetCollection<BsonDocument>(home.Name).UpdateOne(filter,update);
+
+                            //Remove the errorMessage if there is one
+                            if (sensor.ErrorMessage.Length > 0)
+                            {
+                                var updateErrorMessage = Builders<BsonDocument>.Update
+                                .Set("ErrorMessage", "");
+                                _mongoDB.database.GetCollection<BsonDocument>(home.Name).UpdateOne(filter, updateErrorMessage);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -102,7 +110,8 @@ namespace DataRegistrator.Jobs
                         TargetApiLink = sensor["TargetApiLink"].ToString(),
                         Unit = sensor["Unit"].AsString,
                         IsActive = sensor["IsActive"].ToBoolean(),
-                        Name = sensor["Name"].ToString()
+                        Name = sensor["Name"].ToString(),
+                        ErrorMessage = sensor["ErrorMessage"].ToString()
                     });
                 }
                 homeCollection.Add(newHome);

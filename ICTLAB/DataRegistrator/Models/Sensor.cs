@@ -18,6 +18,7 @@ namespace DataRegistrator.Models
         public string Home { get; set; }
         public List<Reading> Readings { get; set; }
         public bool IsActive { get; set; }
+        public string ErrorMessage { get; set; }
 
         public Sensor()
         {
