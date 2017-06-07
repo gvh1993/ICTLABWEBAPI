@@ -515,3 +515,18 @@ System.TimeoutException: A timeout occured after 30000ms selecting a server usin
    at MongoDB.Driver.MongoDatabaseImpl.CreateCollectionHelper[TDocument](String name, CreateCollectionOptions`1 options, CancellationToken cancellationToken)
    at MongoDB.Driver.MongoDatabaseImpl.CreateCollection(String name, CreateCollectionOptions options, CancellationToken cancellationToken)
    at ICTLAB.Repositories.HomeRepository.Create(String name) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\HomeRepository.cs:line 56
+ERROR 2017-06-07 16:36:00,336 36646ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114
+ERROR 2017-06-07 16:36:07,016 43325ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114
+ERROR 2017-06-07 16:36:25,627 61937ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114

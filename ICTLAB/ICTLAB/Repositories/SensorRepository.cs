@@ -93,7 +93,7 @@ namespace ICTLAB.Repositories
             
         }
 
-        public List<BsonDocument> GetSensorsByHome(IMongoCollection<BsonDocument> home)
+        public IEnumerable<BsonDocument> GetSensorsByHome(IMongoCollection<BsonDocument> home)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace ICTLAB.Repositories
             }
         }
 
-        public List<BsonDocument> GetSensorsWithoutCurrent(IMongoCollection<BsonDocument> home, Sensor sensor)
+        public IEnumerable<BsonDocument> GetSensorsWithoutCurrent(IMongoCollection<BsonDocument> home, Sensor sensor)
         {
             try
             {

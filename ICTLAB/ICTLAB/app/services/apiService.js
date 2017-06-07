@@ -55,7 +55,6 @@
             return response;
         },
         deleteSensor: function (sensor) {
-            //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
             var response = $http({
                 url: "/api/Sensor/DeleteSensor",
                 method: "POST",

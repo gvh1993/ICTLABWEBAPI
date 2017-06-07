@@ -7,8 +7,8 @@ namespace ICTLAB.Repositories
 {
     interface ISensorRepository
     {
-        List<BsonDocument> GetSensorsByHome(IMongoCollection<BsonDocument> collection);
-        List<BsonDocument> GetSensorsWithoutCurrent(IMongoCollection<BsonDocument> collection, Sensor sensor);
+        IEnumerable<BsonDocument> GetSensorsByHome(IMongoCollection<BsonDocument> collection);
+        IEnumerable<BsonDocument> GetSensorsWithoutCurrent(IMongoCollection<BsonDocument> collection, Sensor sensor);
         bool Create(CreateSensor sensor, IMongoCollection<BsonDocument> collection);
         bool Delete(Sensor sensor);
         IMongoCollection<BsonDocument> GetCollectionByName(string sensorName);
