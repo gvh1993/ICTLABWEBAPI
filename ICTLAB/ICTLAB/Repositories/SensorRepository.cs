@@ -139,22 +139,5 @@ namespace ICTLAB.Repositories
                 return new BsonDocument();
             }
         }
-
-        public List<BsonDocument> GetSensorsByType(CreateSensor sensor )
-        {
-            try
-            {
-                var home = database.GetCollection<BsonDocument>(sensor.Home);
-                var documents = home.Find(Builders<BsonDocument>.Filter.Eq("Type", sensor.Type)).ToList() ?? new List<BsonDocument>();
-
-                return documents;
-            }
-            catch (Exception ex)
-            {
-                _logger.Error("Could not retrieve sensor by type", ex);
-                return new List<BsonDocument>();
-            }
-
-        }
     }
 }
