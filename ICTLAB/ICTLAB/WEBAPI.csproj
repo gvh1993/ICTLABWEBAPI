@@ -273,6 +273,7 @@
     <Compile Include="MongoDB\MongoDBConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\RefreshTokenProvider.cs" />
     <Compile Include="Repositories\HomeRepository.cs" />
     <Compile Include="Repositories\IHomeRepository.cs" />
     <Compile Include="Repositories\ISensorRepository.cs" />

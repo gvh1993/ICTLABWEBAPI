@@ -51,6 +51,27 @@ namespace ICTLAB.Providers
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
         }
 
+        public override Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
+        {
+            //validate your client  
+            //var currentClient = context.ClientId;  
+
+            //if (Client does not match)  
+            //{  
+            //    context.SetError("invalid_clientId", "Refresh token is issued to a different clientId.");  
+            //    return Task.FromResult<object>(null);  
+            //}  
+
+            // Change authentication ticket for refresh token requests  
+            var newIdentity = new ClaimsIdentity(context.Ticket.Identity);
+            newIdentity.AddClaim(new Claim("newClaim", "newValue"));
+
+            var newTicket = new AuthenticationTicket(newIdentity, context.Ticket.Properties);
+            context.Validated(newTicket);
+
+            return Task.FromResult<object>(null);
+        }
+
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
