@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Jobs\PullDataJob.cs" />
-    <Compile Include="Jobs\RefreshTargetApiLinksJob.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\Reading.cs" />
     <Compile Include="Models\Sensor.cs" />

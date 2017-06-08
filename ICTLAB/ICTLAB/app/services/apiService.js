@@ -1,7 +1,4 @@
 ﻿angular.module("app").service("apiService", ["$http", function ($http) {
-    var httpConfig = {
-    };
-
     var accesstoken = sessionStorage.getItem('accessToken');
 
     var authHeaders = {};
@@ -20,7 +17,6 @@
             return response;
         },
         deleteHome: function (name) {
-            //return $http.post("/api/Sensor/Delete?sensorName=" + sensorName);
             var response = $http({
                 url: "/api/Home/Delete?name=" + name,
                 method: "DELETE",
@@ -59,7 +55,6 @@
                 url: "/api/Sensor/DeleteSensor",
                 method: "POST",
                 data: sensor,
-                //headers: { authHeaders, 'Content-Type': 'application/json' }
                 headers: authHeaders
             });
             return response;

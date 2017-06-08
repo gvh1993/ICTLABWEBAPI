@@ -29,7 +29,6 @@ namespace ICTLAB.ApiControllers
         [HttpPost]
         public IHttpActionResult GetSensorsWithoutCurrent([FromBody] Sensor sensor)
         {
-            // TODO give list of all sensors --> WITH DATA
             var result = _sensorService.GetSensorsWithoutCurrent(sensor);
 
             return Ok(result);
