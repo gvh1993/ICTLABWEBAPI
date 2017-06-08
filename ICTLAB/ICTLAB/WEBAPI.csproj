@@ -216,9 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="apiControllers\HomeController.cs" />
-    <Compile Include="apiControllers\ModelController.cs" />
     <Compile Include="apiControllers\SensorController.cs" />
-    <Compile Include="apiControllers\TemperatureController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

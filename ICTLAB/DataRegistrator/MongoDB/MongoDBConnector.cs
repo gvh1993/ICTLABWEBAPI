@@ -24,7 +24,7 @@ namespace DataRegistrator.MongoDB
                 client = new MongoClient(url);
                 database = client.GetDatabase("local");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 logger.Error("Could not connect to database! " + ex);
             }
