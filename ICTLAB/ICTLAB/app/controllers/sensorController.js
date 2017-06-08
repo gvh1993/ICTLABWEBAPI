@@ -125,6 +125,8 @@
             apiService.updateSensor($scope.sensorDetailModel).then(
                 function successCallback(result) {
                     alert("Successfully updatet " + $scope.sensorDetailModel.Name);
+                    var url = "http://" + $window.location.host + "/sensor/Details/" + $scope.home + "?sensorId=" + $scope.sensorDetailModel._id;
+                    $window.location.href = url;
                 },
             function errorCallback(result) {
                 alert("There was an error while updating " + $scope.sensorDetailModel.Name);

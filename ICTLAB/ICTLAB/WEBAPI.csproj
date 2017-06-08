@@ -306,6 +306,9 @@
     <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="Content\highcharts.css" />
+    <Content Include="Content\Images\chibb.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\youshallnotpass.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

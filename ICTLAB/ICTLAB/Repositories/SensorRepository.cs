@@ -91,7 +91,6 @@ namespace ICTLAB.Repositories
                 _logger.Error("Could not get collection by name",ex);
                 return null;
             }
-            
         }
 
         public IEnumerable<BsonDocument> GetSensorsByHome(IMongoCollection<BsonDocument> home)
