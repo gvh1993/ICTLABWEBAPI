@@ -37,6 +37,9 @@ namespace ICTLAB.Services
             };
 
             var collection = _sensorRepository.GetCollectionByName(sensor.Home);
+            if (collection == null)
+                return false;
+
             bool result = _sensorRepository.Create(newSensor, collection);
 
             return result;
@@ -57,6 +60,8 @@ namespace ICTLAB.Services
         {
             //get collection named {{home}}
             var collection = _sensorRepository.GetCollectionByName(currentSensor.Home);
+            if (collection == null)
+                return new List<Sensor>();
 
             var result = _sensorRepository.GetSensorsWithoutCurrent(collection, currentSensor).ToList();
 
@@ -96,6 +101,8 @@ namespace ICTLAB.Services
         {
             //get collection named {{home}}
             var collection = _sensorRepository.GetCollectionByName(home);
+            if (collection == null)
+                return new List<Sensor>();
 
             var result = _sensorRepository.GetSensorsByHome(collection).ToList();
 

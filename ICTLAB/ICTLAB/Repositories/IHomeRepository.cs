@@ -13,7 +13,6 @@ namespace ICTLAB.Repositories
     {
         bool Create(string name);
         bool Delete(string name);
-        IMongoCollection<BsonDocument> GetByName(string name);
         IAsyncCursor<BsonDocument> Get();
     }
 }

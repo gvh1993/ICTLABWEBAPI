@@ -33,9 +33,8 @@ namespace ICTLAB.Services
 
             var results = _homeRepository.Get();
             if (results == null)
-            {
                 return new List<Home>();
-            }
+            
 
             var collections = results.ToList();
             foreach (var collection in collections)

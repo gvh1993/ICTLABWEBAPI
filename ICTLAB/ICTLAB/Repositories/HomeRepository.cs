@@ -12,38 +12,24 @@ namespace ICTLAB.Repositories
 {
     public class HomeRepository : MongoDB.MongoDBConnector, IHomeRepository
     {
-        ILog logger;
+        readonly ILog _logger;
 
         public HomeRepository()
         {
-            logger = log4net.LogManager.GetLogger(typeof(HomeRepository));
-        }
-
-        //get home
-        public IMongoCollection<BsonDocument> GetByName(string name)
-        {
-            try
-            {
-                var x = database.GetCollection<BsonDocument>(name);
-                return x;
-            }
-            catch (Exception ex)
-            {
-                logger.Error("Unable to get collection by the name of " + name, ex);
-                return null;
-            }
+            _logger = log4net.LogManager.GetLogger(typeof(HomeRepository));
         }
 
         //get all homes
         public IAsyncCursor<BsonDocument> Get()
         {
+            // IF using this method: check return value for null!!
             try
             {
                 return database.ListCollections();
             }
             catch (Exception ex)
             {
-                logger.Error("Could not retrieve homes from DB", ex);
+                _logger.Error("Could not retrieve homes from DB", ex);
                 return null;
             }
         }
@@ -57,7 +43,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error("Could not create: "+name, ex);
+                _logger.Error("Could not create: "+name, ex);
                 return false;
             }
 
@@ -73,7 +59,7 @@ namespace ICTLAB.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error("Could not delete collection: "+name, ex);
+                _logger.Error("Could not delete collection: "+name, ex);
                 return false;
             }
 

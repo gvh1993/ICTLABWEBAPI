@@ -81,6 +81,7 @@ namespace ICTLAB.Repositories
 
         public IMongoCollection<BsonDocument> GetCollectionByName(string sensorName)
         {
+            // IF using this method: check return value for null!!
             try
             {
                 return database.GetCollection<BsonDocument>(sensorName);
