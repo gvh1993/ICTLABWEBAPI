@@ -10,9 +10,5 @@ namespace DataRegistrator.Models
     {
         public DateTime TimeStamp { get; set; }
         public double Value { get; set; }
-        public Reading()
-        {
-
-        }
     }
 }
