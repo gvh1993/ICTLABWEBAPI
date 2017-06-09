@@ -22,7 +22,7 @@ namespace ICTLAB.Services.Tests
         public void Setup()
         {
              _sensorRepository = new Mock<ISensorRepository>();   
-             _sensorService = new SensorService();
+             //_sensorService = new SensorService();
         }
 
         [TestMethod()]
@@ -30,11 +30,11 @@ namespace ICTLAB.Services.Tests
         {
             //AAA
             //Arrange
-            SensorController controller = new SensorController();
+            //SensorController controller = new SensorController();
             string id = "590c9573adf1c9bb74f50d0a";
             string home = "myHome";
             //Act
-            var result = controller.GetSensorBySensorId(id, home);
+            //var result = controller.GetSensorBySensorId(id, home);
             //Assert
             Assert.Fail();
         }

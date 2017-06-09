@@ -7,7 +7,7 @@ using ICTLAB.Models;
 
 namespace ICTLAB.Services
 {
-    interface IHomeService
+    public interface IHomeService
     {
         List<Home> GetAllHomes();
         bool Create(string name);

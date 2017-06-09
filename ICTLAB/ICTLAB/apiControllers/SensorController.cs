@@ -20,9 +20,10 @@ namespace ICTLAB.ApiControllers
     {
         private readonly ISensorService _sensorService;
 
-        public SensorController()
+        public SensorController(ISensorService sensorService)
         {
-            _sensorService = new SensorService();
+            //_sensorService = new SensorService();
+            _sensorService = sensorService;
         }
 
         [Route("GetSensorsWithoutCurrent")]

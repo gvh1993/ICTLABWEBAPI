@@ -13,9 +13,10 @@ namespace ICTLAB.apiControllers
     public class HomeController : ApiController
     {
         readonly IHomeService _homeService;
-        public HomeController()
+        public HomeController(IHomeService homeService)
         {
-            _homeService = new HomeService();
+            //_homeService = new HomeService();
+            _homeService = homeService;
         }
 
         [HttpGet]

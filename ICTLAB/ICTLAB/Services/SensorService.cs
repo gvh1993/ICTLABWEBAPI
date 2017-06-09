@@ -16,10 +16,11 @@ namespace ICTLAB.Services
     {
         private readonly ISensorRepository _sensorRepository;
         readonly log4net.ILog logger;
-        public SensorService()
+        public SensorService(ISensorRepository sensorRepository)
         {
             logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-            _sensorRepository = new SensorRepository();
+            //_sensorRepository = new SensorRepository();
+            _sensorRepository = sensorRepository;
         }
         public bool Create(CreateSensorViewModel sensor)
         {

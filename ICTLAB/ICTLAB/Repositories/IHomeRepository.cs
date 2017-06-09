@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ICTLAB.Repositories
 {
-    interface IHomeRepository
+    public interface IHomeRepository
     {
         bool Create(string name);
         bool Delete(string name);

@@ -12,9 +12,10 @@ namespace ICTLAB.Services
     public class HomeService : IHomeService
     {
         readonly IHomeRepository _homeRepository;
-        public HomeService()
+        public HomeService(IHomeRepository homeRepository)
         {
-            _homeRepository = new HomeRepository();
+            //_homeRepository = new HomeRepository();
+            _homeRepository = homeRepository;
         }
 
         public bool Create(string name)

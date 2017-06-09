@@ -19,6 +19,9 @@ namespace ICTLAB
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
+
+            // Configure dependency injection using Autofac
+            AutofacApiConfig.RegisterAutofac(GlobalConfiguration.Configuration);
         }
 
         void Application_EndRequest(object sender, System.EventArgs e)
