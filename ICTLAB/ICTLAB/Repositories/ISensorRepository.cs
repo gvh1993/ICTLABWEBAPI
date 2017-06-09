@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ICTLAB.Repositories
 {
-    interface ISensorRepository
+    public interface ISensorRepository
     {
         IEnumerable<BsonDocument> GetSensorsByHome(IMongoCollection<BsonDocument> collection);
         IEnumerable<BsonDocument> GetSensorsWithoutCurrent(IMongoCollection<BsonDocument> collection, Sensor sensor);

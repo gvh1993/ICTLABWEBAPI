@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ICTLAB.Services
 {
-    interface ISensorService
+    public interface ISensorService
     {
         List<Sensor> GetSensorsWithoutCurrent(Sensor currentSensor);
         List<Sensor> GetSensorsWithoutReadingsByHome(string home);
