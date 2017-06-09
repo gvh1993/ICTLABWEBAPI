@@ -11,7 +11,6 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using ICTLAB.Providers;
 using ICTLAB.Models;
-using ICTLAB.Providers;
 
 namespace ICTLAB
 {

@@ -63,12 +63,17 @@
         
         promiselogin.then(function (resp) {
             $scope.userName = resp.data.userName;
-            //Store the token information in the SessionStorage
+            //Store the token information in the localStorage
             //So that it can be accessed for other views
             $scope.loading = false;
-            sessionStorage.setItem('userName', resp.data.userName);
-            sessionStorage.setItem('accessToken', resp.data.access_token);
-            sessionStorage.setItem('refreshToken', resp.data.refresh_token);
+            //sessionStorage.setItem('userName', resp.data.userName);
+            //sessionStorage.setItem('accessToken', resp.data.access_token);
+            //sessionStorage.setItem('refreshToken', resp.data.refresh_token);
+
+            localStorage.setItem("userName", resp.data.userName);
+            localStorage.setItem("accessToken", resp.data.access_token);
+            localStorage.setItem("refreshToken", resp.data.refresh_token);
+
             window.location.href = '/Dashboard/Index';
         }, function (err) {
             $scope.responseData = err.data.error_description;
@@ -81,6 +86,8 @@
             function successCallback(result) {
                 var x = result;
                 sessionStorage.removeItem('accessToken');
+                //localStorage.removeItem("accessToken");
+
                 window.location.href = '/Login/Login';
             },
             function errorCallback(result) {
