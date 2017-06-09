@@ -290,9 +290,9 @@
     <Content Include="app\controllers\accountController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\sensorController.js" />
-    <Content Include="app\directives\3MonthChart.js" />
+    <Content Include="app\directives\sensorHistoryChart.js" />
     <Content Include="app\directives\counterDirective.js" />
-    <Content Include="app\directives\SensorCorrelationChart.js" />
+    <Content Include="app\directives\sensorCorrelationChart.js" />
     <Content Include="app\services\apiService.js" />
     <Content Include="App_Data\aspnet-ICTLAB-20170316060559.mdf" />
     <Content Include="App_Data\aspnet-ICTLAB-20170316060559_log.ldf">

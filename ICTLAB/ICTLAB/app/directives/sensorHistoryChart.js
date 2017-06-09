@@ -1,4 +1,4 @@
-﻿angular.module('app').directive('threeMonthChart', function() {
+﻿angular.module('app').directive('sensorHistoryChart', function() {
     return {
         restrict: 'E',
         scope: {
@@ -17,7 +17,7 @@
                         zoomType: 'x'
                     },
                     title: {
-                        text: 'Measurements last 3 months',
+                        text: scope.sensorDetailModel.Name,
                         dateTimeLabelFormats: { // don't display the dummy year
                             month: '%e. %b',
                             year: '%b'
@@ -30,21 +30,14 @@
                         type: 'datetime',
                         title: {
                             text: 'Datum / tijd'   
-                        }
-
+                        },
+                        minRange: 1
                     },
                     yAxis: {
                         title: {
-                            text: scope.sensorDetailModel.Type
+                            text: scope.sensorDetailModel.Type + "(" + scope.sensorDetailModel.Unit + ")"
                         }
                     },
-                    //plotOptions: {
-                    //    spline: {
-                    //        marker: {
-                    //            enabled: true
-                    //        }
-                    //    }
-                    //},
                     plotOptions: {
                         area: {
                             fillColor: {

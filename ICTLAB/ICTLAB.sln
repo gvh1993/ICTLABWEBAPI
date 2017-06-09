@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEBAPI", "ICTLAB\WEBAPI.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRegistrator", "DataRegistrator\DataRegistrator.csproj", "{6503AE49-537D-44B0-A98D-DC6EC6B71B24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{FD6FB03F-FDB7-4BDB-BC77-AD8A7FF144BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6503AE49-537D-44B0-A98D-DC6EC6B71B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6503AE49-537D-44B0-A98D-DC6EC6B71B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6503AE49-537D-44B0-A98D-DC6EC6B71B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6FB03F-FDB7-4BDB-BC77-AD8A7FF144BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6FB03F-FDB7-4BDB-BC77-AD8A7FF144BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6FB03F-FDB7-4BDB-BC77-AD8A7FF144BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6FB03F-FDB7-4BDB-BC77-AD8A7FF144BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -42,11 +42,11 @@
             <input id="errorMessage" class="form-control" type="text" ng-model="sensorDetailModel.ErrorMessage"/><br/>
             <br/>
 
-            <button class="btn btn-default" ng-click="updateSensor()">Update Sensor</button>
+            <button class="btn btn-primary" ng-click="updateSensor()">Update Sensor</button>
         </div>
     </div>
     <div class="col-md-2">
-        @Html.ActionLink("Terug naar sensor", "Details", "Sensor", new {id = ViewBag.ID, sensorId = ViewBag.SensorId}, new { @class = "btn btn-default" })
+        @Html.ActionLink("Terug naar sensor", "Details", "Sensor", new {id = ViewBag.ID, sensorId = ViewBag.SensorId}, new { @class = "btn btn-primary" })
     </div>
 </div>
 

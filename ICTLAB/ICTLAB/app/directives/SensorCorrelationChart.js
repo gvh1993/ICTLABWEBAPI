@@ -34,13 +34,14 @@
                         xAxis: {
                             title: {
                                 text: sensor2.Name
-                            }
-
+                            },
+                            minRange: -273
                         },
                         yAxis: {
                             title: {
                                 text: sensor1.Name
-                            }
+                            },
+                            minRange: -273
                         },
                         plotOptions: {
                             scatter: {

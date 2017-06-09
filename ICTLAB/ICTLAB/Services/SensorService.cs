@@ -146,7 +146,7 @@ namespace ICTLAB.Services
                 Room = sensorBson["Room"].ToString()
             };
             List<Reading> readings = (from reading in sensorBson["Readings"].AsBsonArray
-                                      where reading["TimeStamp"] >= DateTime.Now.AddMonths(-3) //should be refactored to repository and add it to query.. but due to lack of time.. i'm sorry!
+                                      //where reading["TimeStamp"] >= DateTime.Now.AddMonths(-3) //should be refactored to repository and add it to query.. but due to lack of time.. i'm sorry!
                                       select new Reading
                                       {
                                           TimeStamp = reading["TimeStamp"].ToLocalTime(),

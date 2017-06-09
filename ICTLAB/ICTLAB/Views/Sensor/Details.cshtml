@@ -13,6 +13,12 @@
 <div ng-app="app" ng-controller="sensorController" data-ng-init="getSensorById()">
     <h2>@ViewBag.ID</h2>
     <h2>Details - {{sensorDetailModel.Name}}</h2>
+
+    <div class="tooltipwrapper">
+        <span><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+        <span class="tooltiptext">U kunt inzoomen door een rechthoek in de grafiek te slepen.</span>
+    </div>
+
     <div class="row">
         <div class="col-md-10">
             <table class="table up">
@@ -37,16 +43,16 @@
             </table>
         </div>
         <div class="col-md-2">
-            @Html.ActionLink("Terug naar home" , "Index", "Sensor", new {id = ViewBag.ID}, new {@class = "btn btn-default"})
+            @Html.ActionLink("Terug naar home" , "Index", "Sensor", new {id = ViewBag.ID}, new {@class = "btn btn-primary"})
             <br/>
             <br/>
-            @Html.ActionLink("Update Sensor", "Update", "Sensor", new { id = ViewBag.ID, sensorId = ViewBag.SensorId }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Update Sensor", "Update", "Sensor", new { id = ViewBag.ID, sensorId = ViewBag.SensorId }, new { @class = "btn btn-primary" })
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-7">
-            <three-month-chart sensor-detail-model="sensorDetailModel"></three-month-chart>
+            <sensor-history-chart sensor-detail-model="sensorDetailModel"></sensor-history-chart>
         </div>
         <div class="col-md-3">
             <counter-directive sensor-detail-model="sensorDetailModel"></counter-directive>
