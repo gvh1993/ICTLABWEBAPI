@@ -775,3 +775,23 @@ System.ArgumentNullException: Value cannot be null.
 Parameter name: s
    at MongoDB.Bson.ObjectId.Parse(String s)
    at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114
+ERROR 2017-06-10 21:27:43,245 30003ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114
+ERROR 2017-06-10 21:27:47,322 34080ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114
+ERROR 2017-06-10 21:28:27,346 74104ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114
+ERROR 2017-06-10 21:28:33,903 80661ms SensorRepository       sorsWithoutCurrent - Could not retrieve sensor by home
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at ICTLAB.Repositories.SensorRepository.GetSensorsWithoutCurrent(IMongoCollection`1 home, Sensor sensor) in F:\ICTLABWEBAPI\ICTLAB\ICTLAB\Repositories\SensorRepository.cs:line 114

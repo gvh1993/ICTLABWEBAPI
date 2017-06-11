@@ -24,6 +24,7 @@
                 },
                 function errorCallback(result) {
                     var x = result;
+                    alert("Unable to retrieve the homes");
                 });
         };
 
