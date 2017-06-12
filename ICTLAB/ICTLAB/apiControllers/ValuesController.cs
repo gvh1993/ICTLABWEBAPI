@@ -4,37 +4,109 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ICTLAB.Models;
 
 namespace ICTLAB.ApiControllers
 {
-    [Authorize]
+    /// <summary>
+    /// 
+    /// </summary>
+    [RoutePrefix("api/Values")]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+
+        private readonly Random _r;
+        /// <summary>
+        /// 
+        /// </summary>
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            _r = new Random();
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        /// <summary>
+        /// Returns a random temperature value between 0 - 25
+        /// </summary>
+        /// <returns>Reading object {TimeStamp: DateTime, Value: string}</returns>
+        [Route("Temperature")]
+        [HttpGet]
+        public Reading GetTemperature()
         {
-            return "value";
+            Reading reading = new Reading()
+            {
+                TimeStamp = DateTime.Now,
+                Value = _r.Next(0, 25)
+            };
+
+            return reading;
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        /// <summary>
+        /// Returns a random wind value from 0 kmph to 60 kmph
+        /// </summary>
+        /// <returns>Reading object {TimeStamp: DateTime, Value: string}</returns>
+        [Route("Wind")]
+        [HttpGet]
+        public Reading GetWind()
         {
+            Reading reading = new Reading()
+            {
+                TimeStamp = DateTime.Now,
+                Value = _r.Next(0, 61)
+            };
+
+            return reading;
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        /// Returns a random moist value from 0 - 1024
+        /// </summary>
+        /// <returns>Reading object {TimeStamp: DateTime, Value: string}</returns>
+        [Route("Moist")]
+        [HttpGet]
+        public Reading GetMoist()
         {
+            Reading reading = new Reading()
+            {
+                TimeStamp = DateTime.Now,
+                Value = _r.Next(0, 1024)
+            };
+
+            return reading;
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        /// <summary>
+        /// Returns a random light/lux value from 0 to 100.000 lux
+        /// </summary>
+        /// <returns>Reading object {TimeStamp: DateTime, Value: string}</returns>
+        [Route("Light")]
+        [HttpGet]
+        public Reading GetLight()
         {
+            Reading reading = new Reading()
+            {
+                TimeStamp = DateTime.Now,
+                Value = _r.Next(0, 100000)
+            };
+
+            return reading;
+        }
+
+        /// <summary>
+        /// Returns a random humidity value from 0 percent to 100 percent
+        /// </summary>
+        /// <returns>Reading object {TimeStamp: DateTime, Value: string}</returns>
+        [Route("Humidity")]
+        [HttpGet]
+        public Reading GetHumidity()
+        {
+            Reading reading = new Reading()
+            {
+                TimeStamp = DateTime.Now,
+                Value = _r.Next(0, 100)
+            };
+
+            return reading;
         }
     }
 }
