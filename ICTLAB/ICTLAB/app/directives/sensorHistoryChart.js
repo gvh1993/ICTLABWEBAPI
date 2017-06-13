@@ -1,4 +1,4 @@
-﻿angular.module('app').directive('sensorHistoryChart', function() {
+﻿angular.module('app').directive('sensorHistoryChart', [function() {
     return {
         restrict: 'E',
         scope: {
@@ -7,8 +7,15 @@
         link: function (scope, element) {
             scope.$watch('sensorDetailModel', function () {// to make sure the sensorDatailModel is filled by controller first!
                 var data = [];
-                angular.forEach(scope.sensorDetailModel.Readings, function(value, key) {
-                    var dataPoint = [new Date(value.TimeStamp).getTime(), value.Value];
+                angular.forEach(scope.sensorDetailModel.Readings, function (value, key) {
+                    //change time to epoch
+                    var timeStamp = new Date(value.TimeStamp);
+                    var offset = timeStamp.getTimezoneOffset() / 60;
+                    var hours = timeStamp.getHours();
+                    timeStamp.setHours(hours - offset);
+                    timeStamp = timeStamp.getTime();
+
+                    var dataPoint = [timeStamp, value.Value];
                     data.push(dataPoint);
                 });
 
@@ -18,7 +25,7 @@
                     },
                     title: {
                         text: scope.sensorDetailModel.Name,
-                        dateTimeLabelFormats: { // don't display the dummy year
+                        dateTimeLabelFormats: {
                             month: '%e. %b',
                             year: '%b'
                         },
@@ -74,11 +81,6 @@
                     }]
                 });
             }); 
-
-
-            
         }
     }
-
-
-});
+}]);

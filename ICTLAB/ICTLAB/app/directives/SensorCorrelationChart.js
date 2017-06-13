@@ -33,13 +33,13 @@
                         },
                         xAxis: {
                             title: {
-                                text: sensor2.Name
+                                text: sensor1.Name + "(" + sensor1.Unit + ")"
                             },
                             minRange: -273
                         },
                         yAxis: {
                             title: {
-                                text: sensor1.Name
+                                text: sensor2.Name + "(" + sensor2.Unit + ")"
                             },
                             minRange: -273
                         },
@@ -72,8 +72,9 @@
                         },
                         series: [
                             {
-                                //name: 'sensordata',
+                                name: 'correlation',
                                 //type: 'area',
+                                color: 'rgba(119, 152, 191, .5)',
                                 data: filteredData
                             }
                         ]
