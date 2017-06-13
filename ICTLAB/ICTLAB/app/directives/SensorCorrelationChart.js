@@ -2,11 +2,11 @@
     return {
         restrict: 'E',
         scope: {
-            home: '@',
             sensorDetailModel: '='
         },
         link: function (scope, element, attrs) {
             scope.$watch(attrs.sensorDetailModel, function () { // to make sure the sensorDatailModel is filled by controller first!
+                scope.home = window.home;
                 var sensorCollection = {};
                 var chartCount = 0;
 
