@@ -86,7 +86,7 @@ namespace ICTLAB.Services
                 List<Reading> readings = new List<Reading>();
                 foreach (var reading in document["Readings"].AsBsonArray)
                 {
-                    if (reading["TimeStamp"] <= DateTime.Now.AddMonths(-1))
+                    if (reading["TimeStamp"] >= DateTime.Now.AddMonths(-1))
                     {
                         readings.Add(new Reading
                         {
@@ -152,7 +152,7 @@ namespace ICTLAB.Services
             List<Reading> readings = new List<Reading>();
             foreach (var reading in sensorBson["Readings"].AsBsonArray)
             {
-                if (reading["TimeStamp"] <= DateTime.Now.AddMonths(-1))
+                if (reading["TimeStamp"] >= DateTime.Now.AddMonths(-1))
                 {
                     readings.Add(new Reading
                     {
