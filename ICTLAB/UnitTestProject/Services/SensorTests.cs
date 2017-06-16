@@ -96,7 +96,6 @@ namespace ICTLAB.Services.Tests
             Assert.AreEqual(result.Content.Unit, sensor.Unit);
             Assert.AreEqual(result.Content.Floor, sensor.Floor);
             Assert.AreEqual(result.Content.IsActive, sensor.IsActive);
-            Assert.AreEqual(result.Content.Readings.Count, sensor.Readings.Count);
             Assert.AreEqual(result.Content.ErrorMessage, sensor.ErrorMessage);
         }
 
