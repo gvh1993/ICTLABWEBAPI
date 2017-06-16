@@ -35,6 +35,7 @@ namespace DataRegistrator.Jobs
                     {
                         using (WebClient client = new WebClient())
                         {
+                            System.Threading.Thread.Sleep(1000);
                             var content = client.DownloadString(sensor.TargetApiLink); //get data from targetapilink
                             
                             Reading reading = JsonConvert.DeserializeObject<Reading>(content); //try to parse to Reading object to make sure it is an reading object
