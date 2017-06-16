@@ -27,7 +27,7 @@ namespace DataRegistrator.Services
              .WithIdentity("pullDataTrigger", "group1")
              .StartNow()
              .WithSimpleSchedule(x => x
-                 .WithIntervalInMinutes(5)
+                 .WithIntervalInMinutes(60)
                  .RepeatForever())
              .Build();
 
