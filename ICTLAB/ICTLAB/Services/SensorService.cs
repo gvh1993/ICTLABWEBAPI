@@ -86,11 +86,14 @@ namespace ICTLAB.Services
                 List<Reading> readings = new List<Reading>();
                 foreach (var reading in document["Readings"].AsBsonArray)
                 {
-                    readings.Add(new Reading
+                    if (reading["TimeStamp"] <= DateTime.Now.AddMonths(-1))
                     {
-                        TimeStamp = reading["TimeStamp"].ToUniversalTime(),
-                        Value = reading["Value"].ToDouble()
-                    });
+                        readings.Add(new Reading
+                        {
+                            TimeStamp = reading["TimeStamp"].ToUniversalTime(),
+                            Value = reading["Value"].ToDouble()
+                        });
+                    }
                 }
                 sensor.Readings = readings;
                 list.Add(sensor);
@@ -148,11 +151,17 @@ namespace ICTLAB.Services
             };
             List<Reading> readings = new List<Reading>();
             foreach (var reading in sensorBson["Readings"].AsBsonArray)
-                readings.Add(new Reading
+            {
+                if (reading["TimeStamp"] <= DateTime.Now.AddMonths(-1))
                 {
-                    TimeStamp = reading["TimeStamp"].ToLocalTime(),
-                    Value = reading["Value"].ToDouble()
-                });
+                    readings.Add(new Reading
+                    {
+                        TimeStamp = reading["TimeStamp"].ToLocalTime(),
+                        Value = reading["Value"].ToDouble()
+                    });
+                }
+            }
+                
             sensor.Readings = readings;
             return sensor;
         }

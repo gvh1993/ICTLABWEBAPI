@@ -12,7 +12,7 @@
                 scope.onTimeout = function () {
                     if (scope.counter <= countTo) {
                         //element.html(scope.counter);
-                        element.html("<center><h2>Number of measurements</h2> <br/> <h3>" + scope.counter + "</h3> </center>");
+                        element.html("<center><h2>Total number of measurements</h2> <br/> <h3>" + scope.counter + "</h3> </center>");
                         scope.counter++;
                         mytimeout = $timeout(scope.onTimeout, 5);
                     } else {
